@@ -1,0 +1,7 @@
+<?php echo $this->getChildHtml('eepay_sampo_description') ?>
+<form name="sampo" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
+    <?php foreach($this->getFields() as $key => $value): ?>
+	<input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
+    <?php endforeach; ?>
+    <input type="submit" value="* Alusta maksmist" />
+</form>
