@@ -1,5 +1,6 @@
 <?php echo $this->getChildHtml('eepay_sampo_description') ?>
 <form name="sampo" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
+    <img src="<?php echo $this->getSkinUrl(sprintf('images/eepohs/eepay/%s_logo_88x31.gif', strtolower($this->_gateway)));?>">
     <?php foreach($this->getFields() as $key => $value): ?>
 	<input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
     <?php endforeach; ?>

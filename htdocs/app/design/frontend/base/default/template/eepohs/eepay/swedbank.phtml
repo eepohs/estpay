@@ -1,7 +1,8 @@
 <?php echo $this->getChildHtml('eepay_swedbank_description') ?>
 <form name="swedbank" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
+    <input type="image" src="<?php echo $this->getSkinUrl(sprintf('images/eepohs/eepay/%s_logo_220x31_eng.png', strtolower($this->_gateway)));?>" onclick="this.form.submit()"/>
     <?php foreach($this->getFields() as $key => $value): ?>
-	<input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
+	<input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>"/>
     <?php endforeach; ?>
-    <input type="submit" value="* Alusta maksmist" />
+    
 </form>

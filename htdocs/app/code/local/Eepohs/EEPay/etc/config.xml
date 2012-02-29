@@ -22,6 +22,17 @@
 	    </eepay>
 	</blocks>
     </global>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Eepohs_EEPay>
+                    <files>
+                        <default>Eepohs_EEPay.csv</default>
+                    </files>
+                </Eepohs_EEPay>
+            </modules>
+        </translate>
+    </adminhtml>
     <frontend>
 	<layout>
 	    <updates>
@@ -113,7 +124,7 @@
 		<invoice_confirmation>1</invoice_confirmation>
 		<model>eepay/krediidipank</model>
 		<payment_action>authorize</payment_action>
-	    </eepohs_krediidipank>	
+	    </eepohs_krediidipank>
 	    <eepohs_estcard>
 		<active>0</active>
 		<title>VISA / Mastercard</title>
