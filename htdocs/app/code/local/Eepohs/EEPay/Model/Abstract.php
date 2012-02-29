@@ -28,7 +28,7 @@ class Eepohs_EEPay_Model_Abstract extends Mage_Payment_Model_Method_Abstract {
             Mage::register('current_invoice', $invoice); // Pronto: ma ei tea, kas see on vajalik?
         }
         
-        $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);
+        $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING); // Pronto: kas selle jaoks ei ole mingi konstanti?
         $order->save();
         
     }

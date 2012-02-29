@@ -5,7 +5,7 @@ class Eepohs_EEPay_Model_IPizza extends Eepohs_EEPay_Model_Abstract {
     public function verify($params) {
 
 	if ($params['VK_SERVICE'] != '1101') {
-            Mage::log('* IPizza return service is not 1101: ' . $params['VK_SERVICE']);
+            Mage::log('* Return service is not 1101: ' . $params['VK_SERVICE']);
             return FALSE;
         }
 	

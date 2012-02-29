@@ -11,14 +11,14 @@ class Eepohs_EEPay_Controller_Abstract extends Mage_Core_Controller_Front_Action
 	    $order->sendNewOrderEmail();
 	    $order->save();
 	}
-
+	
 	$this->loadLayout();
 	$this->renderLayout();
-
+	    
     }
-
+    
     public function returnAction() {
-
+	
 	$model = Mage::getModel($this->_model);
         $verify = $model->verify($this->getRequest()->getParams());
         if ($verify === TRUE) {
@@ -30,8 +30,8 @@ class Eepohs_EEPay_Controller_Abstract extends Mage_Core_Controller_Front_Action
             $order = Mage::getModel('sales/order')->loadByIncrementId($session->getLastRealOrderId());
             $order->cancel()->save();
             $this->_redirect('checkout/onepage/failure');
-        }
-
+        }	
+    
     }
-
+    
 }
