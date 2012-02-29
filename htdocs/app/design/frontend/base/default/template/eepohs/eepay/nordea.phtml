@@ -4,5 +4,5 @@
     <?php foreach($this->getFields() as $key => $value): ?>
 	<input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
     <?php endforeach; ?>
-    <input type="submit" value="* Alusta maksmist" />
+    <button class="button" onclick="this.form.submit();"><span><span><?php echo $this->__('Alusta maksmist')?></span></span></button>
 </form>
