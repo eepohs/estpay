@@ -1,8 +1,9 @@
 <?php echo $this->getChildHtml('eepay_nordea_description') ?>
+<?php echo $this->getQuickRedirectScript();?>
 <form name="nordea" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
     <img src="<?php echo $this->getSkinUrl(sprintf('images/eepohs/eepay/%s_logo_88x31.gif', strtolower($this->_gateway)));?>" />
     <?php foreach($this->getFields() as $key => $value): ?>
 	<input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
     <?php endforeach; ?>
-    <button class="button" onclick="this.form.submit();"><span><span><?php echo $this->__('Alusta maksmist')?></span></span></button>
+    <button class="button" onclick="this.form.submit();"><span><span><?php echo $this->__('Start payment')?></span></span></button>
 </form>

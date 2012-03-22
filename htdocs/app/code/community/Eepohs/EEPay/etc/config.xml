@@ -32,6 +32,25 @@
                 </Eepohs_EEPay>
             </modules>
         </translate>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <Eepohs_EEPay>
+                                            <title>Eepohs EEPay</title>
+                                        </Eepohs_EEPay>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
     </adminhtml>
     <frontend>
         <layout>

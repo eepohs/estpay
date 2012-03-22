@@ -1,7 +1,8 @@
 <?php echo $this->getChildHtml('eepay_estcard_description') ?>
+<?php echo $this->getQuickRedirectScript();?>
 <form name="estcard" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
     <?php foreach($this->getFields() as $key => $value): ?>
 	<input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
     <?php endforeach; ?>
-    <button class="button" onclick="this.form.submit();"><span><span><?php echo $this->__('Alusta maksmist')?></span></span></button>
+    <button class="button" onclick="this.form.submit();"><span><span><?php echo $this->__('Start payment')?></span></span></button>
 </form>
