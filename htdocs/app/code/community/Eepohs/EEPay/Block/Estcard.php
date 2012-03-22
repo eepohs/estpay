@@ -55,4 +55,14 @@ class Eepohs_EEPay_Block_Estcard extends Eepohs_EEPay_Block_Abstract
         return $fields;
     }
 
+    /**
+     * Estcard doesn't have a logo, so we return an empty string here
+     *
+     * @return string
+     */
+    public function getMethodLabelAfterHtml()
+    {
+        return '';
+    }
+
 }

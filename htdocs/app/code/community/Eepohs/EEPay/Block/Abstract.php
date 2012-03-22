@@ -44,8 +44,6 @@ class Eepohs_EEPay_Block_Abstract extends Mage_Payment_Block_Form
      */
     public function getMethodLabelAfterHtml()
     {
-        //()//if blaa blaa in conf show logo then show logo
-
         $blockHtml = sprintf('<img src="%1$s" title="%2$s" alt="%2$s" class="payment-method-logo"/>', $this->getMethodLogoUrl(), $this->_gateway);
         return $blockHtml;
     }
@@ -72,9 +70,9 @@ class Eepohs_EEPay_Block_Abstract extends Mage_Payment_Block_Form
     {
         $outstr = '';
         if (Mage::getStoreConfig('payment/' . $this->_code . '/quick_redirect')) {
-            $outstr = sprintf('<script type="text/javascript"><!--
-            window.location = "%s";
-            //--></script>', $this->getGatewayUrl());
+            $outstr = '<script type="text/javascript"><!--
+                if($("GatewayForm")){$("GatewayForm").submit();}
+                //--></script>';
         }
         return $outstr;
     }
