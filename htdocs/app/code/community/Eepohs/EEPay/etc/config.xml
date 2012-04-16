@@ -32,6 +32,13 @@
                 </Eepohs_EEPay>
             </modules>
         </translate>
+         <layout>
+            <updates>
+                <Eepohs_EEPay>
+                    <file>eepohs_eepay.xml</file>
+                </Eepohs_EEPay>
+            </updates>
+        </layout>
         <acl>
             <resources>
                 <admin>
