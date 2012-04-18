@@ -1,0 +1,32 @@
+<style type="text/css">
+    .eepohs-logo.title-logo{
+        height: 16px;
+        margin-right: 10px;
+        float:left;
+    }
+    .support-info hr.separator{
+        margin: 10px 0px;
+    }
+</style>
+<script type="text/javascript">
+//<![CDATA[
+    function initEepohsPayment() {
+        var eepay = new EepohsPayment();
+        eepay.addLogoTypes(['payment_eepohs_seb-head', 'payment_eepohs_nordea-head', 'payment_eepohs_swedbank-head', 'payment_eepohs_sampo-head', 'payment_eepohs_krediidipank-head', 'payment_eepohs_estcard-head']);
+        eepay.addSupportInformation(['payment_eepohs_seb']);
+        eepay.setModuleVersion('<?php echo $this->getModuleVersion()?>');
+        eepay.addRegisterButton();
+        eepay.checkForUpgrades();
+    }
+//]]>
+</script>
+<div id="supportInfoTemplate" class="no-display support-info">
+    <hr class="separator"/>
+    <?php echo $this->__('
+        <h3>Eepohs customer support</h3>
+        Please contact Eepohs Customer Support if you have questions or problems: <br />
+        E-mail: <a href="mailto:support@eepohs.com">support@eepohs.com</a><br />
+        Phone: +372 6041104 (Mon-Fri 9.00-17.00)<br /><br />
+        Your module name is: Eepohs_EEPay<br />
+        Your module version is: '. $this->getModuleVersion() );?>
+</div>

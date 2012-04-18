@@ -1,6 +1,6 @@
 <?php
 
-class Eepohs_EEPay_Block_Initjs extends Mage_Adminhtml_Block_Template
+class Eepohs_EEPay_Block_Adminhtml_Initjs extends Mage_Adminhtml_Block_Template
 {
 
     /**
@@ -25,6 +25,10 @@ class Eepohs_EEPay_Block_Initjs extends Mage_Adminhtml_Block_Template
         } else {
             return '';
         }
+    }
+
+    public function getModuleVersion(){
+        return (string) Mage::getConfig()->getNode()->modules->Eepohs_EEPay->version;
     }
 
 }
