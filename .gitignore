@@ -1,1 +1,17 @@
+/htdocs/var/cache
+/htdocs/var/locks
+/htdocs/var/session
+/htdocs/var/report
+/htdocs/var/log
+/htdocs/var/package
+/htdocs/media/catalog
+/nbproject/private/
 /nbproject/
+/htdocs/app/etc/local.xml
+/htdocs/downloader/.cache
+/.idea
+/htdocs/downloader/cache.cfg
+/htdocs/downloader/connect.cfg
+/htdocs/var/backups
+/htdocs/includes/
+.DS_Store
