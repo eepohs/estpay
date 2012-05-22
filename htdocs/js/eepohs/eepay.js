@@ -20,13 +20,18 @@ EepohsPayment.prototype = {
             function(item){
                 var img = document.createElement('img');
                 Element.extend(img);
-                img.src = EepohsPayment.prototype.getServiceUrl('/graphics/logo/x/16/');
+                img.src = EepohsPayment.prototype.getServiceUrl('/graphics/logo/x/14/');
                 img.addClassName('eepohs-logo title-logo');
                 img.writeAttribute('alt', 'Eepohs');
                 img.writeAttribute('title', 'Eepohs');
                 $(item).appendChild(img);
             }
             );
+    },
+    addCss: function(elementClass, classPrefixes){
+        $A(classPrefixes).each(function(item){
+            $(item).up('div.'+elementClass).addClassName('eepohs-payment-method-head');
+        });
     },
     /**
      * Adds blocks with support information
@@ -52,7 +57,14 @@ EepohsPayment.prototype = {
     /**
      * Checks for current module upgrades from Eepohs Services API
      */
-    checkForUpgrades: function(version){
-
+    checkForUpgrades: function(module, version){
+        //TODO implement local AJAX proxy
+//        var url = this.servicesApi + '/software/checkVersion';
+//        new Ajax.Request(url,{
+//            onSuccess: function(response){
+//                alert( response.responseJSON );
+//            }
+//        });
+        return;
     }
 }
