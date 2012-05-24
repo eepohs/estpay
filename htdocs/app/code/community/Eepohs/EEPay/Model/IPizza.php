@@ -1,37 +1,63 @@
 <?php
 
-class Eepohs_EEPay_Model_IPizza extends Eepohs_EEPay_Model_Abstract {
+/**
+ * @package    Eepohs
+ * @subpackage EEPay
+ */
 
-    public function verify($params) {
+/**
+ * EEPay Model for iPizza (Generic  API)
+ *
+ * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
+ * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
+ * TO BE BOUND BY THE TERMS OF THIS LICENSE.
+ * IF YOU DO NOT AGREE TO THE TERMS OF THIS LICENSE, DO NOT USE THE SOFTWARE.
+ *
+ * Full text of this license is available @license
+ *
+ * @license http://www.eepohs.com/eepohs-commercial-software-license/
+ * @licensee $ReleasedTo$
+ * @version $version$
+ * @author Eepohs OÜ
+ * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
+ *
+ * @package    Eepohs
+ * @subpackage EEPay
+ * @category   Payment methods
+ */
+class Eepohs_EEPay_Model_IPizza extends Eepohs_EEPay_Model_Abstract
+{
 
-	if ($params['VK_SERVICE'] != '1101') {
+    public function verify($params)
+    {
+
+        if ($params['VK_SERVICE'] != '1101') {
             Mage::log('* IPizza return service is not 1101: ' . $params['VK_SERVICE']);
             return FALSE;
         }
-	
-	$data = sprintf('%03d%s', strlen($params['VK_SERVICE']), $params['VK_SERVICE'])
-            . sprintf('%03d%s', strlen($params['VK_VERSION']), $params['VK_VERSION'])
-            . sprintf('%03d%s', strlen($params['VK_SND_ID']), $params['VK_SND_ID'])
-            . sprintf('%03d%s', strlen($params['VK_REC_ID']), $params['VK_REC_ID'])
-            . sprintf('%03d%s', strlen($params['VK_STAMP']), $params['VK_STAMP'])
-            . sprintf('%03d%s', strlen($params['VK_T_NO']), $params['VK_T_NO'])
-            . sprintf('%03d%s', strlen($params['VK_AMOUNT']), $params['VK_AMOUNT'])
-            . sprintf('%03d%s', strlen($params['VK_CURR']), $params['VK_CURR'])
-            . sprintf('%03d%s', strlen($params['VK_REC_ACC']), $params['VK_REC_ACC'])
-            . sprintf('%03d%s', strlen($params['VK_REC_NAME']), $params['VK_REC_NAME'])
-            . sprintf('%03d%s', strlen($params['VK_SND_ACC']), $params['VK_SND_ACC'])
-            . sprintf('%03d%s', strlen($params['VK_SND_NAME']), $params['VK_SND_NAME'])
-            . sprintf('%03d%s', strlen($params['VK_REF']), $params['VK_REF'])
-            . sprintf('%03d%s', strlen($params['VK_MSG']), $params['VK_MSG'])
-            . sprintf('%03d%s', strlen($params['VK_T_DATE']), $params['VK_T_DATE']);
-	
-	$key = openssl_pkey_get_public(Mage::getStoreConfig('payment/' . $this->_code . '/bank_certificate'));
-        if(!openssl_verify($data, base64_decode($params['VK_MAC']), $key)){
+
+        $data = sprintf('%03d%s', strlen($params['VK_SERVICE']), $params['VK_SERVICE'])
+                . sprintf('%03d%s', strlen($params['VK_VERSION']), $params['VK_VERSION'])
+                . sprintf('%03d%s', strlen($params['VK_SND_ID']), $params['VK_SND_ID'])
+                . sprintf('%03d%s', strlen($params['VK_REC_ID']), $params['VK_REC_ID'])
+                . sprintf('%03d%s', strlen($params['VK_STAMP']), $params['VK_STAMP'])
+                . sprintf('%03d%s', strlen($params['VK_T_NO']), $params['VK_T_NO'])
+                . sprintf('%03d%s', strlen($params['VK_AMOUNT']), $params['VK_AMOUNT'])
+                . sprintf('%03d%s', strlen($params['VK_CURR']), $params['VK_CURR'])
+                . sprintf('%03d%s', strlen($params['VK_REC_ACC']), $params['VK_REC_ACC'])
+                . sprintf('%03d%s', strlen($params['VK_REC_NAME']), $params['VK_REC_NAME'])
+                . sprintf('%03d%s', strlen($params['VK_SND_ACC']), $params['VK_SND_ACC'])
+                . sprintf('%03d%s', strlen($params['VK_SND_NAME']), $params['VK_SND_NAME'])
+                . sprintf('%03d%s', strlen($params['VK_REF']), $params['VK_REF'])
+                . sprintf('%03d%s', strlen($params['VK_MSG']), $params['VK_MSG'])
+                . sprintf('%03d%s', strlen($params['VK_T_DATE']), $params['VK_T_DATE']);
+
+        $key = openssl_pkey_get_public(Mage::getStoreConfig('payment/' . $this->_code . '/bank_certificate'));
+        if (!openssl_verify($data, base64_decode($params['VK_MAC']), $key)) {
             return FALSE;
         }
-        
-        return TRUE;
 
+        return TRUE;
     }
-    
+
 }

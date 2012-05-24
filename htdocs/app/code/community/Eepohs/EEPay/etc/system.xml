@@ -1,101 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @package    Eepohs
+ * @subpackage EEPay
+ */
+
+/**
+ * EEPay module admin configuration
+ *
+ * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
+ * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
+ * TO BE BOUND BY THE TERMS OF THIS LICENSE.
+ * IF YOU DO NOT AGREE TO THE TERMS OF THIS LICENSE, DO NOT USE THE SOFTWARE.
+ *
+ * Full text of this license is available @license
+ *
+ * @license http://www.eepohs.com/eepohs-commercial-software-license/
+ * @licensee $ReleasedTo$
+ * @version $version$
+ * @author Eepohs OÜ
+ * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
+ *
+ * @package    Eepohs
+ * @subpackage EEPay
+ * @category   Payment methods
+ */
+-->
 <config>
     <sections>
-	<payment>
-	    <groups>
-		<eepohs_seb translate="label" module="eepay">
-		    <label>SEB</label>
-		    <sort_order>100</sort_order>
-		    <show_in_default>1</show_in_default>
-		    <show_in_website>1</show_in_website>
-		    <show_in_store>1</show_in_store>
-		    <fields>
-			<active translate="label">
-			    <label>Enabled</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
-			    <sort_order>1</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</active>
-			<title translate="label">
-			    <label>Title</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>2</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</title>
-			<order_status translate="label">
-			    <label>New Order Status</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_order_status</source_model>
-			    <sort_order>3</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</order_status>
-			<gateway_url translate="label">
-			    <label>Gateway URL</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>4</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</gateway_url>
+        <payment>
+            <groups>
+                <eepohs_seb translate="label" module="eepay">
+                    <label>SEB</label>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <order_status translate="label">
+                            <label>New Order Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status>
+                        <gateway_url translate="label">
+                            <label>Gateway URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gateway_url>
                         <vk_snd_id translate="label">
                             <label>Merchant ID</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>5</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </vk_snd_id>
                         <private_key translate="label">
                             <label>Private Key</label>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>6</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </private_key>
                         <bank_certificate translate="label">
                             <label>Bank Certificate</label>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>7</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </bank_certificate>
-			<order_confirmation translate="label">
-			    <label>Send Order Confirmation</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <order_confirmation translate="label">
+                            <label>Send Order Confirmation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>8</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</order_confirmation>
-			<invoice_confirmation translate="label">
-			    <label>Send Invoice</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_confirmation>
+                        <invoice_confirmation translate="label">
+                            <label>Send Invoice</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>9</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</invoice_confirmation>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </invoice_confirmation>
                         <quick_redirect translate="label">
-			    <label>Quick Redirect</label>
-                            <description><![CDATA[Redirect to bank right after order confirmation (no intermediate page)]]></description>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <label>Quick Redirect</label>
+                            <description><![CDATA[Redirect to bank right after order confirmation (no intermediate page)]]>
+                            </description>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</quick_redirect>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quick_redirect>
                         <sort_order translate="label">
                             <label>Sort order</label>
                             <frontend_type>text</frontend_type>
@@ -105,93 +133,94 @@
                             <show_in_store>1</show_in_store>
                         </sort_order>
 
-		    </fields>
-		</eepohs_seb>
-		<eepohs_nordea translate="label" module="eepay">
-		    <label>Nordea</label>
-		    <sort_order>110</sort_order>
-		    <show_in_default>1</show_in_default>
-		    <show_in_website>1</show_in_website>
-		    <show_in_store>1</show_in_store>
-		    <fields>
-			<active translate="label">
-			    <label>Enabled</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
-			    <sort_order>1</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</active>
-			<title translate="label">
-			    <label>Title</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>2</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</title>
-			<order_status translate="label">
-			    <label>New Order Status</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_order_status</source_model>
-			    <sort_order>3</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</order_status>
-			<gateway_url translate="label">
-			    <label>Gateway URL</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>4</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</gateway_url>
-			<service_provider translate="label">
-			    <label>Service Provider's ID</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>5</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</service_provider>
-			<mac_key translate="label">
-			    <label>MAC Key</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>6</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</mac_key>
-			<order_confirmation translate="label">
-			    <label>Send Order Confirmation</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                    </fields>
+                </eepohs_seb>
+                <eepohs_nordea translate="label" module="eepay">
+                    <label>Nordea</label>
+                    <sort_order>110</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <order_status translate="label">
+                            <label>New Order Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status>
+                        <gateway_url translate="label">
+                            <label>Gateway URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gateway_url>
+                        <service_provider translate="label">
+                            <label>Service Provider's ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </service_provider>
+                        <mac_key translate="label">
+                            <label>MAC Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mac_key>
+                        <order_confirmation translate="label">
+                            <label>Send Order Confirmation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>7</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</order_confirmation>
-			<invoice_confirmation translate="label">
-			    <label>Send Invoice</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_confirmation>
+                        <invoice_confirmation translate="label">
+                            <label>Send Invoice</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>8</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</invoice_confirmation>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </invoice_confirmation>
                         <quick_redirect translate="label">
-			    <label>Quick Redirect</label>
-                            <description><![CDATA[Redirect to bank right after order confirmation (no intermediate page)]]></description>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <label>Quick Redirect</label>
+                            <description><![CDATA[Redirect to bank right after order confirmation (no intermediate page)]]>
+                            </description>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</quick_redirect>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quick_redirect>
                         <sort_order translate="label">
                             <label>Sort order</label>
                             <frontend_type>text</frontend_type>
@@ -200,101 +229,102 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </sort_order>
-		    </fields>
-		</eepohs_nordea>
-		<eepohs_swedbank translate="label" module="eepay">
-		    <label>Swedbank</label>
-		    <sort_order>120</sort_order>
-		    <show_in_default>1</show_in_default>
-		    <show_in_website>1</show_in_website>
-		    <show_in_store>1</show_in_store>
-		    <fields>
-			<active translate="label">
-			    <label>Enabled</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
-			    <sort_order>1</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</active>
-			<title translate="label">
-			    <label>Title</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>2</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</title>
-			<order_status translate="label">
-			    <label>New Order Status</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_order_status</source_model>
-			    <sort_order>3</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</order_status>
-			<gateway_url translate="label">
-			    <label>Gateway URL</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>4</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</gateway_url>
+                    </fields>
+                </eepohs_nordea>
+                <eepohs_swedbank translate="label" module="eepay">
+                    <label>Swedbank</label>
+                    <sort_order>120</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <order_status translate="label">
+                            <label>New Order Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status>
+                        <gateway_url translate="label">
+                            <label>Gateway URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gateway_url>
                         <vk_snd_id translate="label">
                             <label>Merchant ID</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>5</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </vk_snd_id>
                         <private_key translate="label">
                             <label>Private Key</label>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>6</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </private_key>
                         <bank_certificate translate="label">
                             <label>Bank Certificate</label>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>7</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </bank_certificate>
-			<order_confirmation translate="label">
-			    <label>Send Order Confirmation</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <order_confirmation translate="label">
+                            <label>Send Order Confirmation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>8</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</order_confirmation>
-			<invoice_confirmation translate="label">
-			    <label>Send Invoice</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_confirmation>
+                        <invoice_confirmation translate="label">
+                            <label>Send Invoice</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>9</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</invoice_confirmation>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </invoice_confirmation>
                         <quick_redirect translate="label">
-			    <label>Quick Redirect</label>
-                            <description><![CDATA[Redirect to bank right after order confirmation (no intermediate page)]]></description>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <label>Quick Redirect</label>
+                            <description><![CDATA[Redirect to bank right after order confirmation (no intermediate page)]]>
+                            </description>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</quick_redirect>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quick_redirect>
                         <sort_order translate="label">
                             <label>Sort order</label>
                             <frontend_type>text</frontend_type>
@@ -303,101 +333,102 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </sort_order>
-		    </fields>
-		</eepohs_swedbank>
-		<eepohs_sampo translate="label" module="eepay">
-		    <label>Sampo</label>
-		    <sort_order>130</sort_order>
-		    <show_in_default>1</show_in_default>
-		    <show_in_website>1</show_in_website>
-		    <show_in_store>1</show_in_store>
-		    <fields>
-			<active translate="label">
-			    <label>Enabled</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
-			    <sort_order>1</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</active>
-			<title translate="label">
-			    <label>Title</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>2</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</title>
-			<order_status translate="label">
-			    <label>New Order Status</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_order_status</source_model>
-			    <sort_order>3</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</order_status>
-			<gateway_url translate="label">
-			    <label>Gateway URL</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>4</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</gateway_url>
+                    </fields>
+                </eepohs_swedbank>
+                <eepohs_sampo translate="label" module="eepay">
+                    <label>Sampo</label>
+                    <sort_order>130</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <order_status translate="label">
+                            <label>New Order Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status>
+                        <gateway_url translate="label">
+                            <label>Gateway URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gateway_url>
                         <vk_snd_id translate="label">
                             <label>Merchant ID</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>5</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </vk_snd_id>
                         <private_key translate="label">
                             <label>Private Key</label>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>6</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </private_key>
                         <bank_certificate translate="label">
                             <label>Bank Certificate</label>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>7</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </bank_certificate>
-			<order_confirmation translate="label">
-			    <label>Send Order Confirmation</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <order_confirmation translate="label">
+                            <label>Send Order Confirmation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>8</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</order_confirmation>
-			<invoice_confirmation translate="label">
-			    <label>Send Invoice</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_confirmation>
+                        <invoice_confirmation translate="label">
+                            <label>Send Invoice</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>9</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</invoice_confirmation>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </invoice_confirmation>
                         <quick_redirect translate="label">
-			    <label>Quick Redirect</label>
-                            <description><![CDATA[Redirect to bank right after order confirmation (no intermediate page)]]></description>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <label>Quick Redirect</label>
+                            <description><![CDATA[Redirect to bank right after order confirmation (no intermediate page)]]>
+                            </description>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</quick_redirect>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quick_redirect>
                         <sort_order translate="label">
                             <label>Sort order</label>
                             <frontend_type>text</frontend_type>
@@ -406,101 +437,102 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </sort_order>
-		    </fields>
-		</eepohs_sampo>
-		<eepohs_krediidipank translate="label" module="eepay">
-		    <label>Krediidipank</label>
-		    <sort_order>140</sort_order>
-		    <show_in_default>1</show_in_default>
-		    <show_in_website>1</show_in_website>
-		    <show_in_store>1</show_in_store>
-		    <fields>
-			<active translate="label">
-			    <label>Enabled</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
-			    <sort_order>1</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</active>
-			<title translate="label">
-			    <label>Title</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>2</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</title>
-			<order_status translate="label">
-			    <label>New Order Status</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_order_status</source_model>
-			    <sort_order>3</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</order_status>
-			<gateway_url translate="label">
-			    <label>Gateway URL</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>4</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</gateway_url>
+                    </fields>
+                </eepohs_sampo>
+                <eepohs_krediidipank translate="label" module="eepay">
+                    <label>Krediidipank</label>
+                    <sort_order>140</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <order_status translate="label">
+                            <label>New Order Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status>
+                        <gateway_url translate="label">
+                            <label>Gateway URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gateway_url>
                         <vk_snd_id translate="label">
                             <label>Merchant ID</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>5</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </vk_snd_id>
                         <private_key translate="label">
                             <label>Private Key</label>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>6</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </private_key>
                         <bank_certificate translate="label">
                             <label>Bank Certificate</label>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>7</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </bank_certificate>
-			<order_confirmation translate="label">
-			    <label>Send Order Confirmation</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <order_confirmation translate="label">
+                            <label>Send Order Confirmation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>8</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</order_confirmation>
-			<invoice_confirmation translate="label">
-			    <label>Send Invoice</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_confirmation>
+                        <invoice_confirmation translate="label">
+                            <label>Send Invoice</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>9</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</invoice_confirmation>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </invoice_confirmation>
                         <quick_redirect translate="label">
-			    <label>Quick Redirect</label>
-                            <description><![CDATA[Redirect to bank right after order confirmation (no intermediate page)]]></description>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <label>Quick Redirect</label>
+                            <description><![CDATA[Redirect to bank right after order confirmation (no intermediate page)]]>
+                            </description>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</quick_redirect>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quick_redirect>
                         <sort_order translate="label">
                             <label>Sort order</label>
                             <frontend_type>text</frontend_type>
@@ -509,101 +541,102 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </sort_order>
-		    </fields>
-		</eepohs_krediidipank>
-		<eepohs_estcard translate="label" module="eepay">
-		    <label>Estcard</label>
-		    <sort_order>150</sort_order>
-		    <show_in_default>1</show_in_default>
-		    <show_in_website>1</show_in_website>
-		    <show_in_store>1</show_in_store>
-		    <fields>
-			<active translate="label">
-			    <label>Enabled</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
-			    <sort_order>1</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</active>
-			<title translate="label">
-			    <label>Title</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>2</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</title>
-			<order_status translate="label">
-			    <label>New Order Status</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_order_status</source_model>
-			    <sort_order>3</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</order_status>
-			<gateway_url translate="label">
-			    <label>Gateway URL</label>
-			    <frontend_type>text</frontend_type>
-			    <sort_order>4</sort_order>
-			    <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</gateway_url>
+                    </fields>
+                </eepohs_krediidipank>
+                <eepohs_estcard translate="label" module="eepay">
+                    <label>Estcard</label>
+                    <sort_order>150</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <order_status translate="label">
+                            <label>New Order Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status>
+                        <gateway_url translate="label">
+                            <label>Gateway URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gateway_url>
                         <merchant_id translate="label">
                             <label>Merchant ID</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>5</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </merchant_id>
                         <private_key translate="label">
                             <label>Private Key</label>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>6</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </private_key>
                         <bank_certificate translate="label">
                             <label>Bank Certificate</label>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>7</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                         </bank_certificate>
-			<order_confirmation translate="label">
-			    <label>Send Order Confirmation</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <order_confirmation translate="label">
+                            <label>Send Order Confirmation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>8</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</order_confirmation>
-			<invoice_confirmation translate="label">
-			    <label>Send Invoice</label>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_confirmation>
+                        <invoice_confirmation translate="label">
+                            <label>Send Invoice</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>9</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</invoice_confirmation>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </invoice_confirmation>
                         <quick_redirect translate="label">
-			    <label>Quick Redirect</label>
-                            <description><![CDATA[Redirect to bank right after order confirmation (no intermediate page)]]></description>
-			    <frontend_type>select</frontend_type>
-			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <label>Quick Redirect</label>
+                            <description><![CDATA[Redirect to bank right after order confirmation (no intermediate page)]]>
+                            </description>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
-			    <show_in_website>1</show_in_website>
-			    <show_in_store>1</show_in_store>
-			</quick_redirect>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quick_redirect>
                         <sort_order translate="label">
                             <label>Sort order</label>
                             <frontend_type>text</frontend_type>
@@ -612,9 +645,9 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </sort_order>
-		    </fields>
-		</eepohs_estcard>
-	    </groups>
-	</payment>
+                    </fields>
+                </eepohs_estcard>
+            </groups>
+        </payment>
     </sections>
 </config>

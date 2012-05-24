@@ -1,3 +1,30 @@
+<?php
+/**
+ * @package    Eepohs
+ * @subpackage EEPay
+ */
+
+/**
+ * EEPay custom JS and HTML blocks
+ *
+ * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
+ * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
+ * TO BE BOUND BY THE TERMS OF THIS LICENSE.
+ * IF YOU DO NOT AGREE TO THE TERMS OF THIS LICENSE, DO NOT USE THE SOFTWARE.
+ *
+ * Full text of this license is available @license
+ *
+ * @license http://www.eepohs.com/eepohs-commercial-software-license/
+ * @licensee $ReleasedTo$
+ * @version $version$
+ * @author Eepohs OÜ
+ * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
+ *
+ * @package    Eepohs
+ * @subpackage EEPay
+ * @category   Payment methods
+ */
+?>
 <style type="text/css">
     .eepohs-logo.title-logo{
         height: 14px;
@@ -14,17 +41,17 @@
     }
 </style>
 <script type="text/javascript">
-//<![CDATA[
+    //<![CDATA[
     function initEepohsPayment() {
         var eepay = new EepohsPayment();
         //eepay.addLogoTypes(['payment_eepohs_seb-head', 'payment_eepohs_nordea-head', 'payment_eepohs_swedbank-head', 'payment_eepohs_sampo-head', 'payment_eepohs_krediidipank-head', 'payment_eepohs_estcard-head']);
         eepay.addCss( 'entry-edit-head' ,['payment_eepohs_seb-head', 'payment_eepohs_nordea-head', 'payment_eepohs_swedbank-head', 'payment_eepohs_sampo-head', 'payment_eepohs_krediidipank-head', 'payment_eepohs_estcard-head']);
         eepay.addSupportInformation(['payment_eepohs_seb', 'payment_eepohs_swedbank', 'payment_eepohs_nordea', 'payment_eepohs_krediidipank', 'payment_eepohs_sampo', 'payment_eepohs_estcard']);
-        eepay.setModuleVersion('<?php echo $this->getModuleVersion()?>');
+        eepay.setModuleVersion('<?php echo $this->getModuleVersion() ?>');
         eepay.addRegisterButton();
-        eepay.checkForUpgrades('Eepohs_EEPay', '<?php echo $this->getModuleVersion()?>');
+        eepay.checkForUpgrades('Eepohs_EEPay', '<?php echo $this->getModuleVersion() ?>');
     }
-//]]>
+    //]]>
 </script>
 <div id="supportInfoTemplate" class="no-display support-info">
     <hr class="separator"/>
@@ -34,5 +61,5 @@
         E-mail: <a href="mailto:support@eepohs.com">support@eepohs.com</a><br />
         Phone: +372 6041104 (Mon-Fri 9.00-17.00)<br /><br />
         Your module name is: Eepohs_EEPay<br />
-        Your module version is: '. $this->getModuleVersion() );?>
+        Your module version is: ' . $this->getModuleVersion()); ?>
 </div>
