@@ -62,7 +62,7 @@
          <layout>
             <updates>
                 <Eepohs_EEPay>
-                    <file>eepohs/eepay.xml</file>
+                    <file>eepohs/estpay.xml</file>
                 </Eepohs_EEPay>
             </updates>
         </layout>
@@ -90,7 +90,7 @@
         <layout>
             <updates>
                 <Eepohs_EEPay>
-                    <file>eepohs_eepay.xml</file>
+                    <file>eepohs/estpay.xml</file>
                 </Eepohs_EEPay>
             </updates>
         </layout>
