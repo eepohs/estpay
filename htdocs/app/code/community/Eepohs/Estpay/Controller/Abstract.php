@@ -28,6 +28,9 @@
 class Eepohs_Estpay_Controller_Abstract extends Mage_Core_Controller_Front_Action
 {
 
+    /**
+     * This action redirects user to bank for payment
+     */
     public function redirectAction()
     {
 
@@ -52,15 +55,20 @@ class Eepohs_Estpay_Controller_Abstract extends Mage_Core_Controller_Front_Actio
     public function returnAction()
     {
 
+        Mage::log(sprintf('%s(%s): %s', __METHOD__, __LINE__, print_r($_REQUEST, true)));
+        $session = Mage::getSingleton('checkout/session');
+       // $orderId = $session->getLastRealOrderId();
+        if (!$orderId) {
+            $orderId = $this->getRequest()->getParam('VK_STAMP');
+        }
         $model = Mage::getModel($this->_model);
+        $model->setOrderId($orderId);
         $verify = $model->verify($this->getRequest()->getParams());
         if ($verify === TRUE) {
             $model->createInvoice();
             $this->_redirect('checkout/onepage/success');
-            // Pronto: mis siis kui kasutusel on mingi muu checkout?
         } else {
-            $session = Mage::getSingleton('checkout/session');
-            $order = Mage::getModel('sales/order')->loadByIncrementId($session->getLastRealOrderId());
+            $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
             $order->cancel()->save();
             $this->_redirect('checkout/onepage/failure');
         }

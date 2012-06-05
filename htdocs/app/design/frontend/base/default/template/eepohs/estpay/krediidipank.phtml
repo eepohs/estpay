@@ -24,11 +24,14 @@
  * @category   Payment methods
  */
 ?>
-<?php echo $this->getChildHtml('estpay_sampo_description') ?>
-<form id="GatewayForm" name="sampo" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
-    <?php foreach ($this->getFields() as $key => $value): ?>
-        <input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
-    <?php endforeach; ?>
-    <button class="button" onclick="this.form.submit();"><span><span><?php echo $this->__('Start payment') ?></span></span></button>
-</form>
-<?php echo $this->getQuickRedirectScript(); ?>
+<div class="payment_estpay_container payment_method_krediidipank">
+    <?php echo $this->getChildHtml('estpay_sampo_description') ?>
+    <form id="GatewayForm" name="sampo" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
+        <img src="<?php echo $this->getSkinUrl('images/eepohs/estpay/krediidipank_logo_88x31.gif'); ?>" class="payment-gateway-logo krediidipank_logo"/>
+        <?php foreach ($this->getFields() as $key => $value): ?>
+            <input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
+        <?php endforeach; ?>
+        <button class="button" onclick="this.form.submit();"><span><span><?php echo $this->__('Start payment') ?></span></span></button>
+    </form>
+    <?php echo $this->getQuickRedirectScript(); ?>
+</div>

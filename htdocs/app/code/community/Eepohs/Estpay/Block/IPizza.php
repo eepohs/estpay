@@ -28,8 +28,17 @@
 class Eepohs_Estpay_Block_IPizza extends Eepohs_Estpay_Block_Abstract
 {
 
+    /**
+     * Populates and returns array of fields to be submitted
+     * to a bank for payment
+     *
+     * @return Array
+     */
     public function getFields()
     {
+
+        $orderId = Mage::getSingleton('checkout/session')->getLastOrderId();
+        $order = Mage::getModel('sales/order')->load($orderId);
 
         $fields = array();
 
@@ -52,14 +61,11 @@ class Eepohs_Estpay_Block_IPizza extends Eepohs_Estpay_Block_Abstract
         }
 
         $fields['VK_LANG'] = $language;
-        $fields['VK_STAMP'] = time();
-
-        $orderId = Mage::getSingleton('checkout/session')->getLastOrderId();
-        $order = Mage::getModel('sales/order')->load($orderId);
+        $fields['VK_STAMP'] = $order->getIncrementId();
 
         $fields['VK_AMOUNT'] = number_format($order->getBaseGrandTotal(), 2, '.', '');
         $fields['VK_CURR'] = 'EUR';
-        $fields['VK_MSG'] = __('Invoice number') . ' ' . $order->getIncrementId();
+        $fields['VK_MSG'] = __('Order number') . ': ' . $order->getIncrementId();
 
         $data = sprintf('%03d%s', strlen($fields['VK_SERVICE']), $fields['VK_SERVICE'])
                 . sprintf('%03d%s', strlen($fields['VK_VERSION']), $fields['VK_VERSION'])
@@ -71,6 +77,7 @@ class Eepohs_Estpay_Block_IPizza extends Eepohs_Estpay_Block_Abstract
                 . sprintf('%03d%s', strlen($fields['VK_MSG']), $fields['VK_MSG']);
 
         $key = openssl_pkey_get_private(Mage::getStoreConfig('payment/' . $this->_code . '/private_key'), '');
+        $signature = null;
         openssl_sign($data, $signature, $key);
         $fields['VK_MAC'] = base64_encode($signature);
         openssl_free_key($key);

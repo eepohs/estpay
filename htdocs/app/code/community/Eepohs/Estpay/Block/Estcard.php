@@ -35,7 +35,8 @@ class Eepohs_Estpay_Block_Estcard extends Eepohs_Estpay_Block_Abstract
     {
 
         $fields = array();
-        $helper = Mage::helper('estpay');
+        //NB! NETS does not support any field for reference ID
+        //it's needed to rely on session in case of Estcard/NETS
         $orderId = Mage::getSingleton('checkout/session')->getLastOrderId();
         $order = Mage::getModel('sales/order')->load($orderId);
 
@@ -50,6 +51,9 @@ class Eepohs_Estpay_Block_Estcard extends Eepohs_Estpay_Block_Abstract
         switch (Mage::app()->getLocale()->getLocaleCode()) {
             case 'et_EE':
                 $language = 'et';
+                break;
+            case 'ru_RU':
+                $language = 'ru';
                 break;
             case 'fi_FI':
                 $language = 'fi';
@@ -78,6 +82,15 @@ class Eepohs_Estpay_Block_Estcard extends Eepohs_Estpay_Block_Abstract
         openssl_free_key($key);
 
         return $fields;
+    }
+
+    /**
+     * Get Estcard method logo URL
+     * @return type
+     */
+    public function getMethodLogoUrl()
+    {
+        return $imageUrl = $this->getSkinUrl(sprintf('images/eepohs/estpay/%s_logo_120x31.gif', strtolower($this->_gateway)));
     }
 
 }

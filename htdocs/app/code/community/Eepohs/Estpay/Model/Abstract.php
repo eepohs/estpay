@@ -28,20 +28,26 @@
 class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Abstract
 {
 
-    protected $_canAuthorize = TRUE;
-    protected $_isGateway = TRUE;
-    protected $_canUseCheckout = TRUE;
+    protected $_canAuthorize = true;
+    protected $_isGateway = true;
+    protected $_canUseCheckout = true;
+    /**
+     * Order Id to create invoice for
+     * @var string
+     */
+    protected $_orderId;
 
     public function getOrderPlaceRedirectUrl()
     {
         return Mage::getUrl("estpay/" . $this->_gateway . "/redirect");
     }
 
+    /**
+     * This method creates invoice for current order
+     */
     public function createInvoice()
     {
-
-        $session = Mage::getSingleton('checkout/session');
-        $order = Mage::getModel('sales/order')->loadByIncrementId($session->getLastRealOrderId());
+        $order = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId());
 
         if ($order->canInvoice()) {
             $invoice = $order->prepareInvoice();
@@ -53,7 +59,7 @@ class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Abstract
             }
 
             $invoice->save();
-            Mage::register('current_invoice', $invoice); // Pronto: ma ei tea, kas see on vajalik?
+            Mage::register('current_invoice', $invoice);
         }
 
         $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);

@@ -29,7 +29,7 @@
 <config>
     <modules>
         <Eepohs_Estpay>
-            <version>2.0.0</version>
+            <version>1.0.0</version>
         </Eepohs_Estpay>
     </modules>
     <global>

@@ -44,7 +44,7 @@ class Eepohs_Estpay_Block_Abstract extends Mage_Payment_Block_Form
      */
     public function getMethodLabelAfterHtml()
     {
-        $blockHtml = sprintf('<img src="%1$s" title="%2$s" alt="%2$s" class="payment-method-logo"/>', $this->getMethodLogoUrl(), $this->_gateway);
+        $blockHtml = sprintf('<img src="%1$s" title="%2$s" alt="%2$s" class="payment-method-logo"/>', $this->getMethodLogoUrl(), ucfirst($this->_gateway) );
         return $blockHtml;
     }
 
