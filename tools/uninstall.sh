@@ -13,9 +13,10 @@
 ################################################################################
 
 magebase=$1
-installog=`cat install.log`
-
+DIR=$(cd $(dirname "$0"); pwd)
+installog=`cat ${DIR}/install.log`
 uninstall_estpay(){
+
     for f in $installlog; do
         echo "File -> $f"
     done
