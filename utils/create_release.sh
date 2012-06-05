@@ -29,12 +29,12 @@ create_release(){
     git checkout ${release}
     mkdir -p ${tmpdir}
     echo "Copying files from release branch ${release} to ${tmpdir}"
-    cp -R ../app ${tmpdir}/app
-    cp -R ../js ${tmpdir}/js
+    cp -R ../htdocs/* ${tmpdir}/htdocs
+    cp -R ../htdocs/js ${tmpdir}/htdocs/js
     cp -R ../documentation ${tmpdir}/documentation
-    cp -R ../skin $tmpdir/skin
-    cp -R ../tools $tmpdir/tools
-    return 1
+    cp -R ../htdocs/skin $tmpdir/htdocs/skin
+    #cp -R ../tools $tmpdir/tools
+    return 0
 }
 
 # Subroutine for creating archive of installation package
