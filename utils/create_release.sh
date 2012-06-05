@@ -27,13 +27,13 @@ latestdir="../output/${release}/latest"
 create_release(){
     echo "Checking out release branch ${release}"
     git checkout ${release}
-    mkdir -p ${tmpdir}
+    mkdir -p ${tmpdir}/htdocs
     echo "Copying files from release branch ${release} to ${tmpdir}"
     cp -R ../htdocs/* ${tmpdir}/htdocs
     cp -R ../htdocs/js ${tmpdir}/htdocs/js
     cp -R ../documentation ${tmpdir}/documentation
     cp -R ../htdocs/skin $tmpdir/htdocs/skin
-    #cp -R ../tools $tmpdir/tools
+    cp -R ../tools $tmpdir/tools
     return 0
 }
 
@@ -62,11 +62,11 @@ make_zip(){
 
 replace_releasedto(){
     echo "Replacing \$ReleasedTo\$ with ${releasedTo} in ${tmpdir}"
-    grep -Rl "\$ReleasedTo\\$" ../* | xargs perl -p -i -e "s/\\\$ReleasedTo\\$/$releasedTo/g"
+    grep -Rl "\$ReleasedTo\\$" ../tmp/* | xargs perl -p -i -e "s/\\\$ReleasedTo\\$/$releasedTo/g"
     echo "Replacing \$version\$ with $version in ${tmpdir}"
-    grep -Rl "\$version\\$" ../* | xargs perl -p -i -e "s/\\\$version\\$/$version/g"
+    grep -Rl "\$version\\$" ../tmp/* | xargs perl -p -i -e "s/\\\$version\\$/$version/g"
     echo "Replacing \$year\$ with ${year} in $tmpdir"
-    grep -Rl "\$year\\$" ../* | xargs perl -p -i -e "s/\\\$year\\$/$year/g"
+    grep -Rl "\$year\\$" ../tmp/* | xargs perl -p -i -e "s/\\\$year\\$/$year/g"
     return 0
 }
 # Subroutine for cleaning up temporary folder
@@ -92,6 +92,7 @@ case "$1" in
     echo "Creating release $1 of version $version"
     cleanup
     create_release
+    replace_releasedto
     make_zip
     cleanup
     ;;

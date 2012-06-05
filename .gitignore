@@ -15,3 +15,5 @@
 /htdocs/var/backups
 /htdocs/includes/
 .DS_Store
+/tmp
+/output
