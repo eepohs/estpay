@@ -19,8 +19,8 @@ installlog=`cat ${DIR}/install.log`
 # This script removes all files installed by Estpay
 uninstall_estpay(){
     for f in $installlog; do
-        rm -f $f
-        echo "Removed ${f}"
+        rm -f ${magebase}/${f}
+        echo "Removed ${magebase}/${f}"
     done
 }
 
