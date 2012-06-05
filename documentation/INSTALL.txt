@@ -1,0 +1,32 @@
+Please see http://www.eepohs.com/692/estpay-paigaldusjuhend/ for latest version
+of this installation guide.
+
+This information here may be outdated.
+
+Installation of Eepohs Estpay Magento extension
+
+This page describes Estpay installation for Magento.
+As you can see, it’s quite straightforward but some tips may be helpful.
+It is assumed that you have a fully working Magento installed before you start installation of Estpay.
+Estpay extension requires at least Magento version 1.5.
+
+Let's call your website your.magento-site.com. Replace it with fully qualified name of your website.
+
+   1. Extract the Estpay_<version_number>.zip archive to a temporary folder. This is your $source folder. Your Magento installation folder is your $destination folder.
+   2. Copy files and folders from $source/app folder to $destination/app folder. It is important to copy all included subfolders and their structure!
+   3. Copy files and folders from $source/skin to $destination/skin folder. It’s important to retain the structure here as well!
+   4. Copy files and folders from $source/js to $destination/js folder. It’s important to retain the structure here as well!
+   5. Now remove your Magento cache from $destination/var/cache/ (delete all files and subfolders from that folder).
+   6. Open your Magento admin and go to System->Configuration->Payment Methods. You should see Eepohs Estpay payment methods there.
+   7. Configure your Estpay. The fields should be self-explanatory.
+   8. Copy your private key and public keys of the banks to respective fields under Payment methods configuration. Note - it is very important to keep your private key safe!
+
+Some of the bank API URL-s:
+
+https://www.seb.ee/cgi-bin/unet3.sh/un3min.r
+https://www.swedbank.ee/banklink
+https://www2.sampopank.ee/ibank/pizza/pizza
+https://netbank.nordea.com/pnbepay/epayn.jsp
+https://pos.estcard.ee/webpos/servlet/iPAYServlet
+
+Technical support: support@eepohs.com
