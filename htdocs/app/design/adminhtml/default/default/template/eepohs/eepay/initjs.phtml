@@ -1,11 +1,11 @@
 <?php
 /**
  * @package    Eepohs
- * @subpackage EEPay
+ * @subpackage Estpay
  */
 
 /**
- * EEPay custom JS and HTML blocks
+ * Estpay custom JS and HTML blocks
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -21,7 +21,7 @@
  * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
  *
  * @package    Eepohs
- * @subpackage EEPay
+ * @subpackage Estpay
  * @category   Payment methods
  */
 ?>
@@ -40,13 +40,13 @@
 <script type="text/javascript">
     //<![CDATA[
     function initEepohsPayment() {
-        var eepay = new EepohsPayment();
-        eepay.addLogoTypes(['payment_eepohs_seb-head', 'payment_eepohs_nordea-head', 'payment_eepohs_swedbank-head', 'payment_eepohs_sampo-head', 'payment_eepohs_krediidipank-head', 'payment_eepohs_estcard-head']);
-        eepay.addCss( 'entry-edit-head' ,['payment_eepohs_seb-head', 'payment_eepohs_nordea-head', 'payment_eepohs_swedbank-head', 'payment_eepohs_sampo-head', 'payment_eepohs_krediidipank-head', 'payment_eepohs_estcard-head']);
-        eepay.addSupportInformation(['payment_eepohs_seb', 'payment_eepohs_swedbank', 'payment_eepohs_nordea', 'payment_eepohs_krediidipank', 'payment_eepohs_sampo', 'payment_eepohs_estcard']);
-        eepay.setModuleVersion('<?php echo $this->getModuleVersion() ?>');
-        eepay.addRegisterButton();
-        eepay.checkForUpgrades('Eepohs_EEPay', '<?php echo $this->getModuleVersion() ?>');
+        var estpay = new EepohsPayment();
+        estpay.addLogoTypes(['payment_eepohs_seb-head', 'payment_eepohs_nordea-head', 'payment_eepohs_swedbank-head', 'payment_eepohs_sampo-head', 'payment_eepohs_krediidipank-head', 'payment_eepohs_estcard-head']);
+        estpay.addCss( 'entry-edit-head' ,['payment_eepohs_seb-head', 'payment_eepohs_nordea-head', 'payment_eepohs_swedbank-head', 'payment_eepohs_sampo-head', 'payment_eepohs_krediidipank-head', 'payment_eepohs_estcard-head']);
+        estpay.addSupportInformation(['payment_eepohs_seb', 'payment_eepohs_swedbank', 'payment_eepohs_nordea', 'payment_eepohs_krediidipank', 'payment_eepohs_sampo', 'payment_eepohs_estcard']);
+        estpay.setModuleVersion('<?php echo $this->getModuleVersion() ?>');
+        estpay.addRegisterButton();
+        estpay.checkForUpgrades('Eepohs_Estpay', '<?php echo $this->getModuleVersion() ?>');
     }
     //]]>
 </script>
@@ -57,7 +57,7 @@
         Please contact Eepohs Customer Support if you have questions or problems: <br />
         E-mail: <a href="mailto:support@eepohs.com">support@eepohs.com</a><br />
         Phone: +372 6041104 (Mon-Fri 9.00-17.00)<br /><br />
-        Your module name is: Eepohs_EEPay<br />
+        Your module name is: Eepohs_Estpay<br />
         Your module version is: ' . $this->getModuleVersion()); ?>
     <div>
         <a href="http://eepohs.com/" title="E-commerce for the masses" target="_blank"><img src="http://services.eepohs.com/graphics/logo/x/40/" alt="Eepohs"/></a>

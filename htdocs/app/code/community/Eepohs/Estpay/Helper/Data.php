@@ -1,12 +1,12 @@
-<?xml version="1.0"?>
-<!--
+<?php
+
 /**
  * @package    Eepohs
  * @subpackage Estpay
  */
 
 /**
- * Estpay admin layout
+ * Helper class for Estpay payment method
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -25,11 +25,29 @@
  * @subpackage Estpay
  * @category   Payment methods
  */
--->
-<layout>
-    <adminhtml_system_config_edit>
-        <reference name="content">
-            <block type="estpay/adminhtml_initjs" name="estpay_initjs"  template="eepohs/estpay/initjs.phtml"></block>
-        </reference>
-    </adminhtml_system_config_edit>
-</layout>
+class Eepohs_Estpay_Helper_Data extends Mage_Core_Helper_Abstract
+{
+
+    /**
+     * Calculates reference number
+     *
+     * @param type $number
+     * @return string
+     */
+    public function calcRef($number)
+    {
+
+        $n = (string) $number;
+        $w = array(7, 3, 1);
+
+        $sl = $st = strlen($n);
+        $total = 0;
+        while ($sl > 0 and substr($n, --$sl, 1) >= '0') {
+            $total += substr($n, ($st - 1) - $sl, 1) * $w[($sl % 3)];
+        }
+        $c = ((ceil(($total / 10)) * 10) - $total);
+        return $n . $c;
+    }
+
+}
+

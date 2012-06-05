@@ -1,12 +1,11 @@
-<?xml version="1.0"?>
-<!--
+<?php
 /**
  * @package    Eepohs
  * @subpackage Estpay
  */
 
 /**
- * Estpay admin layout
+ * Estpay block template for Swedbank
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -25,11 +24,12 @@
  * @subpackage Estpay
  * @category   Payment methods
  */
--->
-<layout>
-    <adminhtml_system_config_edit>
-        <reference name="content">
-            <block type="estpay/adminhtml_initjs" name="estpay_initjs"  template="eepohs/estpay/initjs.phtml"></block>
-        </reference>
-    </adminhtml_system_config_edit>
-</layout>
+?>
+<?php echo $this->getChildHtml('estpay_swedbank_description') ?>
+<form id="GatewayForm" name="swedbank" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
+    <input type="image" src="<?php echo $this->getSkinUrl(sprintf('images/eepohs/estpay/%s_logo_220x31_eng.png', strtolower($this->_gateway)));?>" onclick="this.form.submit()"/>
+    <?php foreach($this->getFields() as $key => $value): ?>
+	<input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>"/>
+    <?php endforeach; ?>
+</form>
+<?php echo $this->getQuickRedirectScript();?>

@@ -1,12 +1,12 @@
-<?xml version="1.0"?>
-<!--
+<?php
+
 /**
  * @package    Eepohs
  * @subpackage Estpay
  */
 
 /**
- * Estpay admin layout
+ * Estpay Model for SampoPank
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -25,11 +25,11 @@
  * @subpackage Estpay
  * @category   Payment methods
  */
--->
-<layout>
-    <adminhtml_system_config_edit>
-        <reference name="content">
-            <block type="estpay/adminhtml_initjs" name="estpay_initjs"  template="eepohs/estpay/initjs.phtml"></block>
-        </reference>
-    </adminhtml_system_config_edit>
-</layout>
+class Eepohs_Estpay_Model_Sampo extends Eepohs_Estpay_Model_IPizza
+{
+
+    protected $_code = 'eepohs_sampo';
+    protected $_formBlockType = 'estpay/sampo';
+    protected $_gateway = 'sampo';
+
+}

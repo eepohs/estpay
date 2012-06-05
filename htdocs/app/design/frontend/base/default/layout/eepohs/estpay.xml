@@ -2,11 +2,11 @@
 <!--
 /**
  * @package    Eepohs
- * @subpackage EEPay
+ * @subpackage Estpay
  */
 
 /**
- * EEPay frontend layout updates
+ * Estpay frontend layout updates
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -22,75 +22,75 @@
  * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
  *
  * @package    Eepohs
- * @subpackage EEPay
+ * @subpackage Estpay
  * @category   Payment methods
  */
 -->
 <layout version="0.1.0">
-    <eepay_seb_redirect>
+    <estpay_seb_redirect>
         <reference name="content">
-            <block type="eepay/seb" name="eepay_seb" template="eepohs/eepay/seb.phtml">
-                <block type="cms/block" name="eepay_seb_description">
+            <block type="estpay/seb" name="estpay_seb" template="eepohs/estpay/seb.phtml">
+                <block type="cms/block" name="estpay_seb_description">
                     <action method="setBlockId">
-                        <block_id>eepay_seb_description</block_id>
+                        <block_id>estpay_seb_description</block_id>
                     </action>
                 </block>
             </block>
         </reference>
-    </eepay_seb_redirect>
-    <eepay_nordea_redirect>
+    </estpay_seb_redirect>
+    <estpay_nordea_redirect>
         <reference name="content">
-            <block type="eepay/nordea" name="eepay_nordea" template="eepohs/eepay/nordea.phtml">
-                <block type="cms/block" name="eepay_nordea_description">
+            <block type="estpay/nordea" name="estpay_nordea" template="eepohs/estpay/nordea.phtml">
+                <block type="cms/block" name="estpay_nordea_description">
                     <action method="setBlockId">
-                        <block_id>eepay_nordea_description</block_id>
+                        <block_id>estpay_nordea_description</block_id>
                     </action>
                 </block>
             </block>
         </reference>
-    </eepay_nordea_redirect>
-    <eepay_swedbank_redirect>
+    </estpay_nordea_redirect>
+    <estpay_swedbank_redirect>
         <reference name="content">
-            <block type="eepay/swedbank" name="eepay_swedbank" template="eepohs/eepay/swedbank.phtml">
-                <block type="cms/block" name="eepay_swedbank_description">
+            <block type="estpay/swedbank" name="estpay_swedbank" template="eepohs/estpay/swedbank.phtml">
+                <block type="cms/block" name="estpay_swedbank_description">
                     <action method="setBlockId">
-                        <block_id>eepay_swedbank_description</block_id>
+                        <block_id>estpay_swedbank_description</block_id>
                     </action>
                 </block>
             </block>
         </reference>
-    </eepay_swedbank_redirect>
-    <eepay_sampo_redirect>
+    </estpay_swedbank_redirect>
+    <estpay_sampo_redirect>
         <reference name="content">
-            <block type="eepay/sampo" name="eepay_sampo" template="eepohs/eepay/sampo.phtml">
-                <block type="cms/block" name="eepay_sampo_description">
+            <block type="estpay/sampo" name="estpay_sampo" template="eepohs/estpay/sampo.phtml">
+                <block type="cms/block" name="estpay_sampo_description">
                     <action method="setBlockId">
-                        <block_id>eepay_sampo_description</block_id>
+                        <block_id>estpay_sampo_description</block_id>
                     </action>
                 </block>
             </block>
         </reference>
-    </eepay_sampo_redirect>
-    <eepay_krediidipank_redirect>
+    </estpay_sampo_redirect>
+    <estpay_krediidipank_redirect>
         <reference name="content">
-            <block type="eepay/krediidipank" name="eepay_krediidipank" template="eepohs/eepay/krediidipank.phtml">
-                <block type="cms/block" name="eepay_krediidipank_description">
+            <block type="estpay/krediidipank" name="estpay_krediidipank" template="eepohs/estpay/krediidipank.phtml">
+                <block type="cms/block" name="estpay_krediidipank_description">
                     <action method="setBlockId">
-                        <block_id>eepay_krediidipank_description</block_id>
+                        <block_id>estpay_krediidipank_description</block_id>
                     </action>
                 </block>
             </block>
         </reference>
-    </eepay_krediidipank_redirect>
-    <eepay_estcard_redirect>
+    </estpay_krediidipank_redirect>
+    <estpay_estcard_redirect>
         <reference name="content">
-            <block type="eepay/estcard" name="eepay_estcard" template="eepohs/eepay/estcard.phtml">
-                <block type="cms/block" name="eepay_estcard_description">
+            <block type="estpay/estcard" name="estpay_estcard" template="eepohs/estpay/estcard.phtml">
+                <block type="cms/block" name="estpay_estcard_description">
                     <action method="setBlockId">
-                        <block_id>eepay_estcard_description</block_id>
+                        <block_id>estpay_estcard_description</block_id>
                     </action>
                 </block>
             </block>
         </reference>
-    </eepay_estcard_redirect>
+    </estpay_estcard_redirect>
 </layout>

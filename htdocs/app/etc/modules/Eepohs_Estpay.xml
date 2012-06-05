@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+	<Eepohs_Estpay>
+	    <active>true</active>
+	    <codePool>community</codePool>
+	    <depends>
+		<Mage_Payment />
+	    </depends>
+	</Eepohs_Estpay>
+    </modules>
+</config>

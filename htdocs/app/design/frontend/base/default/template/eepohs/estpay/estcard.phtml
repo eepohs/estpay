@@ -1,12 +1,10 @@
-<?xml version="1.0"?>
-<!--
+<?php
 /**
  * @package    Eepohs
  * @subpackage Estpay
  */
-
 /**
- * Estpay admin layout
+ * Estpay block template for Estcard
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -25,11 +23,12 @@
  * @subpackage Estpay
  * @category   Payment methods
  */
--->
-<layout>
-    <adminhtml_system_config_edit>
-        <reference name="content">
-            <block type="estpay/adminhtml_initjs" name="estpay_initjs"  template="eepohs/estpay/initjs.phtml"></block>
-        </reference>
-    </adminhtml_system_config_edit>
-</layout>
+?>
+<?php echo $this->getChildHtml('estpay_estcard_description') ?>
+<form id="GatewayForm" name="estcard" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
+    <?php foreach ($this->getFields() as $key => $value): ?>
+        <input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
+    <?php endforeach; ?>
+    <button class="button" onclick="this.form.submit();"><span><span><?php echo $this->__('Start payment') ?></span></span></button>
+</form>
+<?php echo $this->getQuickRedirectScript(); ?>
