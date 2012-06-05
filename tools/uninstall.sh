@@ -14,11 +14,13 @@
 
 magebase=$1
 DIR=$(cd $(dirname "$0"); pwd)
-installog=`cat ${DIR}/install.log`
-uninstall_estpay(){
+installlog=`cat ${DIR}/install.log`
 
+# This script removes all files installed by Estpay
+uninstall_estpay(){
     for f in $installlog; do
-        echo "File -> $f"
+        rm -f $f
+        echo "Removed ${f}"
     done
 }
 
