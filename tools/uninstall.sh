@@ -13,20 +13,12 @@
 ################################################################################
 
 magebase=$1
+installog=`cat install.log`
 
-uninstall_banklink(){
-    echo "Uninstalling Banklink module code and configuration"
-    rm -rf $magebase/app/code/local/Wasabi/Banklink
-    rm -rf $magebase/app/etc/modules/Wasabi_Banklink.xml
-    echo "Uninstalling Banklink layout and templates"
-    rm -rf $magebase/app/design/frontend/default/default/layout/banklink.xml
-    rm -rf $magebase/app/design/frontend/default/default/template/banklink
-    rm -rf $magebase/app/design/adminhtml/default/default/template/banklink
-    echo "Uninstalling Banklink skin"
-    rm -rf $magebase/skin/frontend/default/banklink
-    echo "Uninstalling Banklink locale files"
-    rm -rf $magebase/app/locale/en_US/Wasabi_Banklink.csv
-    rm -rf $magebase/app/locale/et_EE/Wasabi_Banklink.csv
+uninstall_estpay(){
+    for f in $installlog; do
+        echo "File -> $f"
+    done
 }
 
 check_folders(){
@@ -44,7 +36,7 @@ case "$1" in
     ;;
     *)
         if  ! check_folders; then
-            uninstall_banklink
+            uninstall_estpay
         else
             echo "Please specify correct Magento root folder. For example ../ or /home/vhosts/yourdomain.com/htdocs/magento"
         fi

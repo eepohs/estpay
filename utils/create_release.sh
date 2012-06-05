@@ -29,10 +29,8 @@ create_release(){
     git checkout ${release}
     mkdir -p ${tmpdir}/htdocs
     echo "Copying files from release branch ${release} to ${tmpdir}"
-    cp -R ../htdocs/* ${tmpdir}/htdocs
-    cp -R ../htdocs/js ${tmpdir}/htdocs/js
+    cp -R ../htdocs/* ${tmpdir}/htdocs/
     cp -R ../documentation ${tmpdir}/documentation
-    cp -R ../htdocs/skin $tmpdir/htdocs/skin
     cp -R ../tools $tmpdir/tools
     return 0
 }
@@ -69,6 +67,14 @@ replace_releasedto(){
     grep -Rl "\$year\\$" ../tmp/* | xargs perl -p -i -e "s/\\\$year\\$/$year/g"
     return 0
 }
+# This method creates list of files
+# that would be installed by Estpay
+# for later reference and uninstall
+create_install_log(){
+    cd ${tmpdir}/htdocs
+    find . -type f > ../tools/install.log
+    cd ${appdir}
+}
 # Subroutine for cleaning up temporary folder
 cleanup(){
     echo "Check out master"
@@ -93,6 +99,7 @@ case "$1" in
     cleanup
     create_release
     replace_releasedto
+    create_install_log
     make_zip
     cleanup
     ;;
