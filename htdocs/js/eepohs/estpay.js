@@ -14,8 +14,7 @@
  * Full text of this license is available @license
  *
  * @license http://www.eepohs.com/eepohs-commercial-software-license/
- * @licensee $ReleasedTo$
- * @version $version$
+  * @version $version$
  * @author Eepohs OÜ
  * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
  *

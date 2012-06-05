@@ -16,7 +16,6 @@
  * Full text of this license is available @license
  *
  * @license http://www.eepohs.com/eepohs-commercial-software-license/
- * @licensee $ReleasedTo$
  * @version $version$
  * @author Eepohs OÜ
  * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
@@ -57,7 +56,7 @@ class Eepohs_Estpay_Controller_Abstract extends Mage_Core_Controller_Front_Actio
 
         Mage::log(sprintf('%s(%s): %s', __METHOD__, __LINE__, print_r($_REQUEST, true)));
         $session = Mage::getSingleton('checkout/session');
-       // $orderId = $session->getLastRealOrderId();
+        // $orderId = $session->getLastRealOrderId();
         if (!$orderId) {
             $orderId = $this->getRequest()->getParam('VK_STAMP');
         }

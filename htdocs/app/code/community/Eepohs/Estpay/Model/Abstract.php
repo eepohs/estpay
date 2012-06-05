@@ -16,7 +16,6 @@
  * Full text of this license is available @license
  *
  * @license http://www.eepohs.com/eepohs-commercial-software-license/
- * @licensee $ReleasedTo$
  * @version $version$
  * @author Eepohs OÜ
  * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
@@ -31,6 +30,7 @@ class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Abstract
     protected $_canAuthorize = true;
     protected $_isGateway = true;
     protected $_canUseCheckout = true;
+
     /**
      * Order Id to create invoice for
      * @var string
