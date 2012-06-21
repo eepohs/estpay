@@ -52,13 +52,13 @@ class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Abstract
         if ($order->canInvoice()) {
             $invoice = $order->prepareInvoice();
             $invoice->pay()->register();
+            $invoice->save();
 
             /* Send invoice */
             if (Mage::getStoreConfig('payment/' . $this->_code . '/invoice_confirmation') == '1') {
                 $invoice->sendEmail(TRUE, '');
             }
 
-            $invoice->save();
             Mage::register('current_invoice', $invoice);
         }
 
