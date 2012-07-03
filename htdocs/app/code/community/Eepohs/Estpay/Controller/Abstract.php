@@ -34,11 +34,15 @@ class Eepohs_Estpay_Controller_Abstract extends Mage_Core_Controller_Front_Actio
     {
 
         /* Send order confirmation */
-        if (Mage::getStoreConfig('payment/' . $this->_code . '/order_confirmation') == '1') {
-            $order = Mage::getModel('sales/order');
-            $order->load(Mage::getSingleton('checkout/session')->getLastOrderId());
-            $order->sendNewOrderEmail();
-            $order->save();
+        if ( Mage::getStoreConfig('payment/' . $this->_code . '/order_confirmation') == '1' ) {
+            try {
+                $order = Mage::getModel('sales/order');
+                $order->load(Mage::getSingleton('checkout/session')->getLastOrderId());
+                $order->sendNewOrderEmail();
+                $order->save();
+            } catch ( Exception $e ) {
+                Mage::log(sprintf('%s(%s): %s', __METHOD__, __LINE__, print_r($e->getMessage(), true)));
+            }
         }
 
         $this->loadLayout();
@@ -56,14 +60,14 @@ class Eepohs_Estpay_Controller_Abstract extends Mage_Core_Controller_Front_Actio
 
         Mage::log(sprintf('%s(%s): %s', __METHOD__, __LINE__, print_r($_REQUEST, true)));
         $session = Mage::getSingleton('checkout/session');
-        // $orderId = $session->getLastRealOrderId();
-        if (!$orderId) {
+        $orderId = $session->getLastRealOrderId();
+        if ( !$orderId ) {
             $orderId = $this->getRequest()->getParam('VK_STAMP');
         }
         $model = Mage::getModel($this->_model);
         $model->setOrderId($orderId);
         $verify = $model->verify($this->getRequest()->getParams());
-        if ($verify === TRUE) {
+        if ( $verify === TRUE ) {
             $model->createInvoice();
             $this->_redirect('checkout/onepage/success');
         } else {
