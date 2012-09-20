@@ -92,4 +92,15 @@
             </block>
         </reference>
     </estpay_estcard_redirect>
+    <estpay_lhv_redirect>
+        <reference name="content">
+            <block type="estpay/lhv" name="estpay_lhv" template="eepohs/estpay/lhv.phtml">
+                <block type="cms/block" name="estpay_lhv_description">
+                    <action method="setBlockId">
+                        <block_id>estpay_lhv_description</block_id>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </estpay_lhv_redirect>
 </layout>

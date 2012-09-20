@@ -201,6 +201,21 @@
                 <model>estpay/estcard</model>
                 <payment_action>authorize</payment_action>
             </eepohs_estcard>
+            <eepohs_lhv>
+                <active>0</active>
+                <title>LHV</title>
+                <order_status>pending</order_status>
+                <gateway_url>https://www.lhv.ee/banklink</gateway_url>
+                <vk_snd_id></vk_snd_id>
+                <private_key></private_key>
+                <bank_certificate></bank_certificate>
+                <private_key></private_key>
+                <bank_certificate></bank_certificate>
+                <order_confirmation>0</order_confirmation>
+                <invoice_confirmation>1</invoice_confirmation>
+                <model>estpay/lhv</model>
+                <payment_action>authorize</payment_action>
+            </eepohs_lhv>
         </payment>
     </default>
 </config>

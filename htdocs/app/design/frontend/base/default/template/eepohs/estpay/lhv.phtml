@@ -1,0 +1,35 @@
+<?php
+/**
+ * @package    Eepohs
+ * @subpackage Estpay
+ */
+/**
+ * Estpay block template for Swedbank
+ *
+ * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
+ * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
+ * TO BE BOUND BY THE TERMS OF THIS LICENSE.
+ * IF YOU DO NOT AGREE TO THE TERMS OF THIS LICENSE, DO NOT USE THE SOFTWARE.
+ *
+ * Full text of this license is available @license
+ *
+ * @license http://www.eepohs.com/eepohs-commercial-software-license/
+ * @version $version$
+ * @author Eepohs OÜ
+ * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
+ *
+ * @package    Eepohs
+ * @subpackage Estpay
+ * @category   Payment methods
+ */
+?>
+<div class="payment_estpay_container payment_method_lhv">
+    <?php echo $this->getChildHtml('estpay_lhv_description') ?>
+    <form id="GatewayForm" name="lhv" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
+        <input type="image" src="<?php echo $this->getMethodLogoUrl(); ?>" onclick="this.form.submit()" class="payment-gateway-logo lhv_logo"/>
+        <?php foreach ($this->getFields() as $key => $value): ?>
+            <input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>"/>
+        <?php endforeach; ?>
+    </form>
+    <?php echo $this->getQuickRedirectScript(); ?>
+</div>
