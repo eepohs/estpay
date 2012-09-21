@@ -41,7 +41,7 @@ class Eepohs_Estpay_Helper_Data extends Mage_Core_Helper_Abstract
 
         $sl = $st = strlen($n);
         $total = 0;
-        while ($sl > 0 and substr($n, --$sl, 1) >= '0') {
+        while ( $sl > 0 and substr($n, --$sl, 1) >= '0' ) {
             $total += substr($n, ($st - 1) - $sl, 1) * $w[($sl % 3)];
         }
         $c = ((ceil(($total / 10)) * 10) - $total);

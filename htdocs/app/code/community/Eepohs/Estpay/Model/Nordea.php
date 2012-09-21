@@ -35,7 +35,7 @@ class Eepohs_Estpay_Model_Nordea extends Eepohs_Estpay_Model_Abstract
      * Verifies response from Nordea
      *
      * @param array $params
-     * 
+     *
      * @return boolean
      */
     public function verify(array $params = array())
@@ -59,8 +59,10 @@ class Eepohs_Estpay_Model_Nordea extends Eepohs_Estpay_Model_Abstract
         }
 
         $session = Mage::getSingleton('checkout/session');
+
+        $helper = Mage::helper('estpay');
         // Reference number doesn't match.
-        if ( $session->getLastRealOrderId() != substr($params['SOLOPMT_RETURN_REF'], 0, -1) ) {
+        if ( $helper->calcRef($session->getLastRealOrderId()) != $params['SOLOPMT_RETURN_REF'] ) {
             Mage::log(sprintf("%s (%s): (Nordea): Reference number doesn't match (potential tampering attempt). IP logged: %s", __METHOD__, __LINE__, $_SERVER['REMOTE_ADDR']));
             return false;
         }

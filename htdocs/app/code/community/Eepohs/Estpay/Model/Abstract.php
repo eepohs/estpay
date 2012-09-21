@@ -24,7 +24,7 @@
  * @subpackage Estpay
  * @category   Payment methods
  */
-class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Abstract
+abstract class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Abstract
 {
 
     protected $_canAuthorize = true;
