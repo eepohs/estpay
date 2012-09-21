@@ -63,7 +63,12 @@ class Eepohs_Estpay_Controller_Abstract extends Mage_Core_Controller_Front_Actio
      */
     public function returnAction()
     {
-        $orderId = $this->getRequest()->getParam('VK_STAMP');
+
+        $session = Mage::getSingleton('checkout/session');
+        $orderId = $session->getLastRealOrderId();
+        if ( !$orderId ) {
+            $orderId = $this->getRequest()->getParam('VK_STAMP');
+        }
         if ( !$orderId ) {
             $this->_redirect('checkout/onepage/failure');
             return;
