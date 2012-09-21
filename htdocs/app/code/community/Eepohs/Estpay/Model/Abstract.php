@@ -67,18 +67,10 @@ class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Abstract
     }
 
     /**
-     * Checks if private and public keys exist
-     * If they don't then method is not enabled
+     * Abstract method to be overloaded by implementing classes.
+     * This is used to verify response from bank
      *
-     * @return Eepohs_Estpay_Model_Abstract
+     * @return boolean
      */
-    public function validate()
-    {
-        $key = openssl_pkey_get_public(Mage::getStoreConfig('payment/' . $this->_code . '/bank_certificate'));
-        if ( $key === false ) {
-            Mage::throwException($this->_getHelper()->__('Public key for ' . $this->_code . ' not set'));
-        }
-        return parent::validate();
-    }
-
+    public abstract function verify(array $params = array());
 }

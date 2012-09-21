@@ -31,34 +31,41 @@ class Eepohs_Estpay_Model_Nordea extends Eepohs_Estpay_Model_Abstract
     protected $_formBlockType = 'estpay/nordea';
     protected $_gateway = 'nordea';
 
-    public function verify($params)
+    /**
+     * Verifies response from Nordea
+     *
+     * @param array $params
+     * 
+     * @return boolean
+     */
+    public function verify(array $params = array())
     {
 
         // No Express payment return data
-        if (!$params['SOLOPMT_RETURN_PAID'])
-            return FALSE;
+        if ( !isset($params['SOLOPMT_RETURN_PAID']) )
+            return false;
 
         $data =
-                $params['SOLOPMT_RETURN_VERSION'] . '&' .
-                $params['SOLOPMT_RETURN_STAMP'] . '&' .
-                $params['SOLOPMT_RETURN_REF'] . '&' .
-                $params['SOLOPMT_RETURN_PAID'] . '&' .
-                Mage::getStoreConfig('payment/' . $this->_code . '/mac_key') . '&';
+            $params['SOLOPMT_RETURN_VERSION'] . '&' .
+            $params['SOLOPMT_RETURN_STAMP'] . '&' .
+            $params['SOLOPMT_RETURN_REF'] . '&' .
+            $params['SOLOPMT_RETURN_PAID'] . '&' .
+            Mage::getStoreConfig('payment/' . $this->_code . '/mac_key') . '&';
 
         // Invalid MAC code
-        if ($params['SOLOPMT_RETURN_MAC'] != strtoupper(md5($data))) {
-            Mage::log("* (Nordea) Invalid MAC code: $data");
-            return FALSE;
+        if ( $params['SOLOPMT_RETURN_MAC'] != strtoupper(md5($data)) ) {
+            Mage::log(sprintf("%s (%s): (Nordea) Invalid MAC code", __METHOD__, __LINE__));
+            return false;
         }
 
         $session = Mage::getSingleton('checkout/session');
         // Reference number doesn't match.
-        if ($session->getLastRealOrderId() != substr($params['SOLOPMT_RETURN_REF'], 0, -1)) {
-            Mage::log("* (Nordea): Reference number doesn't match (potential tampering attempt): $data");
-            return FALSE;
+        if ( $session->getLastRealOrderId() != substr($params['SOLOPMT_RETURN_REF'], 0, -1) ) {
+            Mage::log(sprintf("%s (%s): (Nordea): Reference number doesn't match (potential tampering attempt). IP logged: %s", __METHOD__, __LINE__, $_SERVER['REMOTE_ADDR']));
+            return false;
         }
 
-        return TRUE;
+        return true;
     }
 
 }

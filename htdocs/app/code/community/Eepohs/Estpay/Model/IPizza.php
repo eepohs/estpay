@@ -52,12 +52,28 @@ class Eepohs_Estpay_Model_IPizza extends Eepohs_Estpay_Model_Abstract
             . sprintf('%03d%s', strlen($params['VK_T_DATE']), $params['VK_T_DATE']);
 
         $key = openssl_pkey_get_public(Mage::getStoreConfig('payment/' . $this->_code . '/bank_certificate'));
-
-        if ( openssl_verify($data, base64_decode($params['VK_MAC']), $key) ) {
+        $result = openssl_verify($data, base64_decode($params['VK_MAC']), $key);
+        openssl_free_key($key);
+        if ( $result ) {
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * Checks if private and public keys exist
+     * If they don't then method is not enabled
+     *
+     * @return Eepohs_Estpay_Model_Abstract
+     */
+    public function validate()
+    {
+        $key = openssl_pkey_get_public(Mage::getStoreConfig('payment/' . $this->_code . '/bank_certificate'));
+        if ( $key === false ) {
+            Mage::throwException($this->_getHelper()->__('Public key for ' . $this->_code . ' not set'));
+        }
+        return parent::validate();
     }
 
 }

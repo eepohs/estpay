@@ -40,7 +40,7 @@ class Eepohs_Estpay_Block_Estcard extends Eepohs_Estpay_Block_Abstract
         $order = Mage::getModel('sales/order')->load($orderId);
 
         $fields['action'] = 'gaf';
-        $fields['ver'] = '002';
+        $fields['ver'] = '004'; // Old version was 002
         $fields['id'] = Mage::getStoreConfig('payment/' . $this->_code . '/merchant_id');
         $fields['ecuno'] = sprintf('%012s', $order->getIncrementId());
         $fields['eamount'] = sprintf("%012s", (round($order->getBaseGrandTotal(), 2) * 100));
@@ -66,13 +66,23 @@ class Eepohs_Estpay_Block_Estcard extends Eepohs_Estpay_Block_Abstract
         }
         $fields['lang'] = $language;
 
+	// gaf004 related stuff
+	$fields['charEncoding'] = 'ISO-8859-1';
+	// $fields['charEncoding'] = 'UTF-8';
+	$fields['feedBackUrl'] = Mage::getUrl('estpay/' . $this->_gateway . '/return', array('_nosid' => true));
+	$fields['delivery'] = 'T';
+	// Hardcoded for test purposes T = Physical delivery,
+	// S = Electronic delivery
+
         $data =
                 $fields['ver']
                 . sprintf("%-10s", $fields['id'])
                 . $fields['ecuno']
                 . $fields['eamount']
                 . $fields['cur']
-                . $fields['datetime'];
+                . $fields['datetime']
+		. sprintf("%-128s", $fields['feedBackUrl'])
+		. $fields['delivery'];
 
         $mac = sha1($data);
         $key = openssl_pkey_get_private(Mage::getStoreConfig('payment/' . $this->_code . '/private_key'));
