@@ -26,7 +26,7 @@
 <div class="payment_estpay_container payment_method_estcard">
     <?php echo $this->getChildHtml('estpay_estcard_description') ?>
     <form id="GatewayForm" name="estcard" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
-        <img src="<?php echo $this->getSkinUrl('images/eepohs/estpay/estcard_logo_120x31.gif'); ?>" class="payment-gateway-logo estcard_logo"/>
+        <img src="<?php echo $this->getMethodLogoUrl(); ?>" class="payment-gateway-logo estcard_logo"/>
         <?php foreach ($this->getFields() as $key => $value): ?>
             <input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
         <?php endforeach; ?>

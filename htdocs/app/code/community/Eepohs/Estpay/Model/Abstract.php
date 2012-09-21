@@ -49,14 +49,14 @@ class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Abstract
     {
         $order = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId());
 
-        if ($order->canInvoice()) {
+        if ( $order->canInvoice() ) {
             $invoice = $order->prepareInvoice();
             $invoice->pay()->register();
             $invoice->save();
 
             /* Send invoice */
-            if (Mage::getStoreConfig('payment/' . $this->_code . '/invoice_confirmation') == '1') {
-                $invoice->sendEmail(TRUE, '');
+            if ( Mage::getStoreConfig('payment/' . $this->_code . '/invoice_confirmation') == '1' ) {
+                $invoice->sendEmail(true, '');
             }
 
             Mage::register('current_invoice', $invoice);
@@ -64,6 +64,21 @@ class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Abstract
 
         $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);
         $order->save();
+    }
+
+    /**
+     * Checks if private and public keys exist
+     * If they don't then method is not enabled
+     *
+     * @return Eepohs_Estpay_Model_Abstract
+     */
+    public function validate()
+    {
+        $key = openssl_pkey_get_public(Mage::getStoreConfig('payment/' . $this->_code . '/bank_certificate'));
+        if ( $key === false ) {
+            Mage::throwException($this->_getHelper()->__('Public key for ' . $this->_code . ' not set'));
+        }
+        return parent::validate();
     }
 
 }

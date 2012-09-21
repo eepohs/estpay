@@ -30,4 +30,5 @@ class Eepohs_Estpay_Block_Swedbank extends Eepohs_Estpay_Block_IPizza
     protected $_code = 'eepohs_swedbank';
     protected $_gateway = 'swedbank';
 
+
 }

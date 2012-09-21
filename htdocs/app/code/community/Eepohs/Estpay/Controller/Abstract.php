@@ -28,6 +28,12 @@ class Eepohs_Estpay_Controller_Abstract extends Mage_Core_Controller_Front_Actio
 {
 
     /**
+     *
+     * @var Specifies model to be used to verify response from bank
+     */
+    protected $_model;
+
+    /**
      * This action redirects user to bank for payment
      */
     public function redirectAction()
@@ -57,17 +63,15 @@ class Eepohs_Estpay_Controller_Abstract extends Mage_Core_Controller_Front_Actio
      */
     public function returnAction()
     {
-
-        Mage::log(sprintf('%s(%s): %s', __METHOD__, __LINE__, print_r($_REQUEST, true)));
-        $session = Mage::getSingleton('checkout/session');
-        $orderId = $session->getLastRealOrderId();
+        $orderId = $this->getRequest()->getParam('VK_STAMP');
         if ( !$orderId ) {
-            $orderId = $this->getRequest()->getParam('VK_STAMP');
+            $this->_redirect('checkout/onepage/failure');
+            return;
         }
         $model = Mage::getModel($this->_model);
         $model->setOrderId($orderId);
         $verify = $model->verify($this->getRequest()->getParams());
-        if ( $verify === TRUE ) {
+        if ( $verify === true ) {
             $model->createInvoice();
             $this->_redirect('checkout/onepage/success');
         } else {

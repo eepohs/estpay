@@ -27,36 +27,39 @@
 class Eepohs_Estpay_Model_IPizza extends Eepohs_Estpay_Model_Abstract
 {
 
-    public function verify($params)
+    public function verify(array $params = array())
     {
 
-        if ($params['VK_SERVICE'] != '1101') {
-            Mage::log('* IPizza return service is not 1101: ' . $params['VK_SERVICE']);
-            return FALSE;
+        if ( !isset($params['VK_SERVICE']) || $params['VK_SERVICE'] != '1101' ) {
+            Mage::log(sprintf('%s (%s): IPizza return service is not 1101: %s', __METHOD__, __LINE__, $params['VK_SERVICE']));
+            return false;
         }
 
         $data = sprintf('%03d%s', strlen($params['VK_SERVICE']), $params['VK_SERVICE'])
-                . sprintf('%03d%s', strlen($params['VK_VERSION']), $params['VK_VERSION'])
-                . sprintf('%03d%s', strlen($params['VK_SND_ID']), $params['VK_SND_ID'])
-                . sprintf('%03d%s', strlen($params['VK_REC_ID']), $params['VK_REC_ID'])
-                . sprintf('%03d%s', strlen($params['VK_STAMP']), $params['VK_STAMP'])
-                . sprintf('%03d%s', strlen($params['VK_T_NO']), $params['VK_T_NO'])
-                . sprintf('%03d%s', strlen($params['VK_AMOUNT']), $params['VK_AMOUNT'])
-                . sprintf('%03d%s', strlen($params['VK_CURR']), $params['VK_CURR'])
-                . sprintf('%03d%s', strlen($params['VK_REC_ACC']), $params['VK_REC_ACC'])
-                . sprintf('%03d%s', strlen($params['VK_REC_NAME']), $params['VK_REC_NAME'])
-                . sprintf('%03d%s', strlen($params['VK_SND_ACC']), $params['VK_SND_ACC'])
-                . sprintf('%03d%s', strlen($params['VK_SND_NAME']), $params['VK_SND_NAME'])
-                . sprintf('%03d%s', strlen($params['VK_REF']), $params['VK_REF'])
-                . sprintf('%03d%s', strlen($params['VK_MSG']), $params['VK_MSG'])
-                . sprintf('%03d%s', strlen($params['VK_T_DATE']), $params['VK_T_DATE']);
+            . sprintf('%03d%s', strlen($params['VK_VERSION']), $params['VK_VERSION'])
+            . sprintf('%03d%s', strlen($params['VK_SND_ID']), $params['VK_SND_ID'])
+            . sprintf('%03d%s', strlen($params['VK_REC_ID']), $params['VK_REC_ID'])
+            . sprintf('%03d%s', strlen($params['VK_STAMP']), $params['VK_STAMP'])
+            . sprintf('%03d%s', strlen($params['VK_T_NO']), $params['VK_T_NO'])
+            . sprintf('%03d%s', strlen($params['VK_AMOUNT']), $params['VK_AMOUNT'])
+            . sprintf('%03d%s', strlen($params['VK_CURR']), $params['VK_CURR'])
+            . sprintf('%03d%s', strlen($params['VK_REC_ACC']), $params['VK_REC_ACC'])
+            . sprintf('%03d%s', strlen($params['VK_REC_NAME']), $params['VK_REC_NAME'])
+            . sprintf('%03d%s', strlen($params['VK_SND_ACC']), $params['VK_SND_ACC'])
+            . sprintf('%03d%s', strlen($params['VK_SND_NAME']), $params['VK_SND_NAME'])
+            . sprintf('%03d%s', strlen($params['VK_REF']), $params['VK_REF'])
+            . sprintf('%03d%s', strlen($params['VK_MSG']), $params['VK_MSG'])
+            . sprintf('%03d%s', strlen($params['VK_T_DATE']), $params['VK_T_DATE']);
 
         $key = openssl_pkey_get_public(Mage::getStoreConfig('payment/' . $this->_code . '/bank_certificate'));
-        if (!openssl_verify($data, base64_decode($params['VK_MAC']), $key)) {
-            return FALSE;
+        if ( !$key ) {
+            Mage::log(sprintf('%s (%s): Key not found: %s', __METHOD__, __LINE__, 'payment/' . $this->_code . '/bank_certificate'));
+        }
+        if ( !openssl_verify($data, base64_decode($params['VK_MAC']), $key) ) {
+            return false;
         }
 
-        return TRUE;
+        return true;
     }
 
 }

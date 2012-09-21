@@ -89,7 +89,7 @@ class Eepohs_Estpay_Block_Estcard extends Eepohs_Estpay_Block_Abstract
      */
     public function getMethodLogoUrl()
     {
-        return $imageUrl = $this->getSkinUrl(sprintf('images/eepohs/estpay/%s_logo_120x31.gif', strtolower($this->_gateway)));
+        return $this->getSkinUrl(sprintf('images/eepohs/estpay/%s_logo_120x31.gif', strtolower($this->_gateway)));
     }
 
 }

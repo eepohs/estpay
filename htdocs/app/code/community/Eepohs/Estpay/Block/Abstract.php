@@ -54,7 +54,7 @@ class Eepohs_Estpay_Block_Abstract extends Mage_Payment_Block_Form
      */
     public function getMethodLogoUrl()
     {
-        return $imageUrl = $this->getSkinUrl(sprintf('images/eepohs/estpay/%s_logo_88x31.gif', strtolower($this->_gateway)));
+        return $this->getSkinUrl(sprintf('images/eepohs/estpay/%s_logo_88x31.gif', strtolower($this->_gateway)));
     }
 
     /**
