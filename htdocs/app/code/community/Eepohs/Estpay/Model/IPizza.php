@@ -52,14 +52,12 @@ class Eepohs_Estpay_Model_IPizza extends Eepohs_Estpay_Model_Abstract
             . sprintf('%03d%s', strlen($params['VK_T_DATE']), $params['VK_T_DATE']);
 
         $key = openssl_pkey_get_public(Mage::getStoreConfig('payment/' . $this->_code . '/bank_certificate'));
-        if ( !$key ) {
-            Mage::log(sprintf('%s (%s): Key not found: %s', __METHOD__, __LINE__, 'payment/' . $this->_code . '/bank_certificate'));
-        }
-        if ( !openssl_verify($data, base64_decode($params['VK_MAC']), $key) ) {
-            return false;
+
+        if ( openssl_verify($data, base64_decode($params['VK_MAC']), $key) ) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 
 }
