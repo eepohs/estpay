@@ -35,6 +35,15 @@ class Eepohs_Estpay_Model_IPizza extends Eepohs_Estpay_Model_Abstract
             return false;
         }
 
+        
+        $vkSndId = Mage::getStoreConfig('payment/' . $this->_code . '/vk_snd_id');
+
+        if ( !isset($params['VK_SND_ID']) || $params['VK_SND_ID'] != $vkSndId ) {
+            Mage::log(sprintf('%s (%s): Wrong merchant ID used for return: %s vs %s', __METHOD__, __LINE__, $params['VK_SND_ID'], $vkSndId));
+            return false;
+        }
+
+
         $data = sprintf('%03d%s', strlen($params['VK_SERVICE']), $params['VK_SERVICE'])
             . sprintf('%03d%s', strlen($params['VK_VERSION']), $params['VK_VERSION'])
             . sprintf('%03d%s', strlen($params['VK_SND_ID']), $params['VK_SND_ID'])
