@@ -43,7 +43,8 @@
  * @subpackage Estpay
  * @category   Payment methods
  */
-class Eepohs_Estpay_Block_IPizza extends Eepohs_Estpay_Block_Abstract
+class Eepohs_Estpay_Block_IPizza
+    extends Eepohs_Estpay_Block_Abstract
 {
 
     /**
@@ -62,11 +63,13 @@ class Eepohs_Estpay_Block_IPizza extends Eepohs_Estpay_Block_Abstract
 
         $fields['VK_SERVICE'] = '1002';
         $fields['VK_VERSION'] = '008';
-        $fields['VK_SND_ID'] = Mage::getStoreConfig('payment/' . $this->_code . '/vk_snd_id');
+        $fields['VK_SND_ID'] =
+            Mage::getStoreConfig('payment/' . $this->_code . '/vk_snd_id');
         $fields['VK_REF'] = '';
-        $fields['VK_RETURN'] = Mage::getUrl('estpay/' . $this->_gateway . '/return');
+        $fields['VK_RETURN'] =
+            Mage::getUrl('estpay/' . $this->_gateway . '/return');
 
-        switch (Mage::app()->getLocale()->getLocaleCode()) {
+        switch ( Mage::app()->getLocale()->getLocaleCode() ) {
             case 'et_EE':
                 $language = 'EST';
                 break;
@@ -81,20 +84,36 @@ class Eepohs_Estpay_Block_IPizza extends Eepohs_Estpay_Block_Abstract
         $fields['VK_LANG'] = $language;
         $fields['VK_STAMP'] = $order->getIncrementId();
 
-        $fields['VK_AMOUNT'] = number_format($order->getBaseGrandTotal(), 2, '.', '');
+        $fields['VK_AMOUNT'] = number_format(
+            $order->getBaseGrandTotal(), 2, '.', ''
+        );
         $fields['VK_CURR'] = 'EUR';
-        $fields['VK_MSG'] = __('Order number') . ': ' . $order->getIncrementId();
+        $fields['VK_MSG'] =
+            __('Order number') . ': ' . $order->getIncrementId();
 
-        $data = sprintf('%03d%s', strlen($fields['VK_SERVICE']), $fields['VK_SERVICE'])
-                . sprintf('%03d%s', strlen($fields['VK_VERSION']), $fields['VK_VERSION'])
-                . sprintf('%03d%s', strlen($fields['VK_SND_ID']), $fields['VK_SND_ID'])
-                . sprintf('%03d%s', strlen($fields['VK_STAMP']), $fields['VK_STAMP'])
-                . sprintf('%03d%s', strlen($fields['VK_AMOUNT']), $fields['VK_AMOUNT'])
-                . sprintf('%03d%s', strlen($fields['VK_CURR']), $fields['VK_CURR'])
-                . sprintf('%03d%s', strlen($fields['VK_REF']), $fields['VK_REF'])
-                . sprintf('%03d%s', strlen($fields['VK_MSG']), $fields['VK_MSG']);
+        $data =
+            sprintf(
+                '%03d%s', strlen($fields['VK_SERVICE']), $fields['VK_SERVICE']
+            )
+            . sprintf(
+                '%03d%s', strlen($fields['VK_VERSION']), $fields['VK_VERSION']
+            )
+            . sprintf(
+                '%03d%s', strlen($fields['VK_SND_ID']), $fields['VK_SND_ID']
+            )
+            . sprintf(
+                '%03d%s', strlen($fields['VK_STAMP']), $fields['VK_STAMP']
+            )
+            . sprintf(
+                '%03d%s', strlen($fields['VK_AMOUNT']), $fields['VK_AMOUNT']
+            )
+            . sprintf('%03d%s', strlen($fields['VK_CURR']), $fields['VK_CURR'])
+            . sprintf('%03d%s', strlen($fields['VK_REF']), $fields['VK_REF'])
+            . sprintf('%03d%s', strlen($fields['VK_MSG']), $fields['VK_MSG']);
 
-        $key = openssl_pkey_get_private(Mage::getStoreConfig('payment/' . $this->_code . '/private_key'), '');
+        $key = openssl_pkey_get_private(
+            Mage::getStoreConfig('payment/' . $this->_code . '/private_key'), ''
+        );
         $signature = null;
         openssl_sign($data, $signature, $key);
         $fields['VK_MAC'] = base64_encode($signature);

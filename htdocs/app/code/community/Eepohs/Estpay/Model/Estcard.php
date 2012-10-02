@@ -53,10 +53,17 @@ class Eepohs_Estpay_Model_Estcard extends Eepohs_Estpay_Model_Abstract
     public function verify(array $params = array())
     {
 
-        $merchantId = Mage::getStoreConfig('payment/' . $this->_code . '/merchant_id');
+        $merchantId = Mage::getStoreConfig(
+            'payment/' . $this->_code . '/merchant_id'
+        );
 
         if ( !isset($params['id']) || $params['id'] != $merchantId ) {
-            Mage::log(sprintf('%s (%s): Wrong merchant ID used for return: %s vs %s', __METHOD__, __LINE__, $params['id'], $merchantId));
+            Mage::log(
+                sprintf(
+                    '%s (%s): Wrong merchant ID used for return: %s vs %s',
+                    __METHOD__, __LINE__, $params['id'], $merchantId
+                )
+            );
             return false;
         }
 
@@ -73,7 +80,11 @@ class Eepohs_Estpay_Model_Estcard extends Eepohs_Estpay_Model_Abstract
             . sprintf("%-40s", urldecode($params['actiontext']));
         $mac = pack('H*', $params['mac']);
 
-        $key = openssl_pkey_get_public(Mage::getStoreConfig('payment/' . $this->_code . '/bank_certificate'));
+        $key = openssl_pkey_get_public(
+            Mage::getStoreConfig(
+                'payment/' . $this->_code . '/bank_certificate'
+            )
+        );
         $result = openssl_verify($data, $mac, $key);
         openssl_free_key($key);
 

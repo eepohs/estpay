@@ -43,7 +43,8 @@
  * @subpackage Estpay
  * @category   Payment methods
  */
-class Eepohs_Estpay_Block_Adminhtml_Initjs extends Mage_Adminhtml_Block_Template
+class Eepohs_Estpay_Block_Adminhtml_Initjs
+    extends Mage_Adminhtml_Block_Template
 {
 
     /**
@@ -52,10 +53,10 @@ class Eepohs_Estpay_Block_Adminhtml_Initjs extends Mage_Adminhtml_Block_Template
     protected function _prepareLayout()
     {
         $section = $this->getAction()->getRequest()->getParam('section', false);
-        if ($section == 'payment') {
+        if ( $section == 'payment' ) {
             $this->getLayout()
-                    ->getBlock('head')
-                    ->addJs('eepohs/estpay.js');
+                ->getBlock('head')
+                ->addJs('eepohs/estpay.js');
         }
         parent::_prepareLayout();
     }
@@ -63,7 +64,7 @@ class Eepohs_Estpay_Block_Adminhtml_Initjs extends Mage_Adminhtml_Block_Template
     protected function _toHtml()
     {
         $section = $this->getAction()->getRequest()->getParam('section', false);
-        if ($section == 'payment') {
+        if ( $section == 'payment' ) {
             return parent::_toHtml();
         } else {
             return '';
@@ -72,7 +73,11 @@ class Eepohs_Estpay_Block_Adminhtml_Initjs extends Mage_Adminhtml_Block_Template
 
     public function getModuleVersion()
     {
-        return (string) Mage::getConfig()->getNode()->modules->Eepohs_Estpay->version;
+        return (string) Mage::getConfig()
+                ->getNode()
+            ->modules
+            ->Eepohs_Estpay
+             ->version;
     }
 
 }

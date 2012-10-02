@@ -43,7 +43,8 @@
  * @subpackage Estpay
  * @category   Payment methods
  */
-class Eepohs_Estpay_Block_Abstract extends Mage_Payment_Block_Form
+class Eepohs_Estpay_Block_Abstract
+    extends Mage_Payment_Block_Form
 {
 
     /**
@@ -62,7 +63,13 @@ class Eepohs_Estpay_Block_Abstract extends Mage_Payment_Block_Form
      */
     public function getMethodLabelAfterHtml()
     {
-        $blockHtml = sprintf('<img src="%1$s" title="%2$s" alt="%2$s" class="payment-method-logo"/>', $this->getMethodLogoUrl(), ucfirst($this->_gateway) );
+        $blockHtml = sprintf(
+            '<img src="%1$s"
+                title="%2$s"
+                alt="%2$s"
+                class="payment-method-logo"/>',
+            $this->getMethodLogoUrl(), ucfirst($this->_gateway)
+        );
         return $blockHtml;
     }
 
@@ -73,7 +80,12 @@ class Eepohs_Estpay_Block_Abstract extends Mage_Payment_Block_Form
      */
     public function getMethodLogoUrl()
     {
-        return $this->getSkinUrl(sprintf('images/eepohs/estpay/%s_logo_88x31.gif', strtolower($this->_gateway)));
+        return $this->getSkinUrl(
+            sprintf(
+                'images/eepohs/estpay/%s_logo_88x31.gif',
+                strtolower($this->_gateway)
+            )
+        );
     }
 
     /**
@@ -87,7 +99,9 @@ class Eepohs_Estpay_Block_Abstract extends Mage_Payment_Block_Form
     public function getQuickRedirectScript()
     {
         $outstr = '';
-        if (Mage::getStoreConfig('payment/' . $this->_code . '/quick_redirect')) {
+        if (
+            Mage::getStoreConfig('payment/' . $this->_code . '/quick_redirect')
+        ) {
             $outstr = '<script type="text/javascript"><!--
                 if($("GatewayForm")){$("GatewayForm").submit();}
                 //--></script>';

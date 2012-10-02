@@ -43,7 +43,8 @@
  * @subpackage Estpay
  * @category   Payment methods
  */
-class Eepohs_Estpay_Controller_Abstract extends Mage_Core_Controller_Front_Action
+class Eepohs_Estpay_Controller_Abstract
+    extends Mage_Core_Controller_Front_Action
 {
 
     /**
@@ -59,14 +60,26 @@ class Eepohs_Estpay_Controller_Abstract extends Mage_Core_Controller_Front_Actio
     {
 
         /* Send order confirmation */
-        if ( Mage::getStoreConfig('payment/' . $this->_code . '/order_confirmation') == '1' ) {
+        if (
+            Mage::getStoreConfig(
+                'payment/' . $this->_code . '/order_confirmation'
+            )
+            == '1'
+        ) {
             try {
                 $order = Mage::getModel('sales/order');
-                $order->load(Mage::getSingleton('checkout/session')->getLastOrderId());
+                $order->load(
+                    Mage::getSingleton('checkout/session')->getLastOrderId()
+                );
                 $order->sendNewOrderEmail();
                 $order->save();
             } catch ( Exception $e ) {
-                Mage::log(sprintf('%s(%s): %s', __METHOD__, __LINE__, print_r($e->getMessage(), true)));
+                Mage::log(
+                    sprintf(
+                        '%s(%s): %s', __METHOD__, __LINE__,
+                        print_r($e->getMessage(), true)
+                    )
+                );
             }
         }
 

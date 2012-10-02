@@ -43,7 +43,8 @@
  * @subpackage Estpay
  * @category   Payment methods
  */
-abstract class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Abstract
+abstract class Eepohs_Estpay_Model_Abstract
+    extends Mage_Payment_Model_Method_Abstract
 {
 
     protected $_canAuthorize = true;
@@ -66,7 +67,8 @@ abstract class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Ab
      */
     public function createInvoice()
     {
-        $order = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId());
+        $order = Mage::getModel('sales/order')
+            ->loadByIncrementId($this->getOrderId());
 
         if ( $order->canInvoice() ) {
             $invoice = $order->prepareInvoice();
@@ -74,7 +76,11 @@ abstract class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Ab
             $invoice->save();
 
             /* Send invoice */
-            if ( Mage::getStoreConfig('payment/' . $this->_code . '/invoice_confirmation') == '1' ) {
+            if (
+                Mage::getStoreConfig(
+                    'payment/' . $this->_code . '/invoice_confirmation'
+                ) == '1'
+            ) {
                 $invoice->sendEmail(true, '');
             }
 
