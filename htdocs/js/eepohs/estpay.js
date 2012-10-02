@@ -63,7 +63,7 @@ EepohsPayment.prototype = {
             function(item){
                 var img = document.createElement('img');
                 Element.extend(img);
-                img.src = '/skin/adminhtml/default/default/images/eepohs/estpay/eepohs_logo_small.png';
+                img.src = SKIN_URL + 'images/eepohs/estpay/eepohs_logo_small.png';
                 img.addClassName('eepohs-logo title-logo');
                 img.writeAttribute('alt', 'Eepohs');
                 img.writeAttribute('title', 'Eepohs');
