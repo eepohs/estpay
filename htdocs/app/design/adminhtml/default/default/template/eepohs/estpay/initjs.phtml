@@ -40,8 +40,8 @@
     //<![CDATA[
     function initEepohsPayment() {
         var estpay = new EepohsPayment();
-        estpay.addLogoTypes(['payment_eepohs_seb-head', 'payment_eepohs_nordea-head', 'payment_eepohs_swedbank-head', 'payment_eepohs_sampo-head', 'payment_eepohs_krediidipank-head', 'payment_eepohs_estcard-head', 'payment_eepohs_lhv-head']);
         estpay.addCss( 'entry-edit-head' ,['payment_eepohs_seb-head', 'payment_eepohs_nordea-head', 'payment_eepohs_swedbank-head', 'payment_eepohs_sampo-head', 'payment_eepohs_krediidipank-head', 'payment_eepohs_estcard-head', 'payment_eepohs_lhv-head']);
+        estpay.addLogoTypes(['payment_eepohs_seb-head', 'payment_eepohs_nordea-head', 'payment_eepohs_swedbank-head', 'payment_eepohs_sampo-head', 'payment_eepohs_krediidipank-head', 'payment_eepohs_estcard-head', 'payment_eepohs_lhv-head']);
         estpay.addSupportInformation(['payment_eepohs_seb', 'payment_eepohs_swedbank', 'payment_eepohs_nordea', 'payment_eepohs_krediidipank', 'payment_eepohs_sampo', 'payment_eepohs_estcard', 'payment_eepohs_lhv']);
         estpay.setModuleVersion('<?php echo $this->getModuleVersion() ?>');
         estpay.addRegisterButton();
@@ -55,10 +55,10 @@
         <h3>Eepohs customer support</h3>
         Please contact Eepohs Customer Support if you have questions or problems: <br />
         E-mail: <a href="mailto:support@eepohs.com">support@eepohs.com</a><br />
-        Phone: +372 6041104 (Mon-Fri 9.00-17.00)<br /><br />
+        Phone: +372 6041104 (Mon-Fri 9.00-17.00 GMT+2)<br /><br />
         Your module name is: Eepohs_Estpay<br />
         Your module version is: ' . $this->getModuleVersion()); ?>
     <div>
-        <a href="http://eepohs.com/" title="E-commerce for the masses" target="_blank"><img src="http://services.eepohs.com/graphics/logo/x/40/" alt="Eepohs"/></a>
+        <a href="http://eepohs.com/" title="E-commerce for the masses" target="_blank"><img src="/skin/frontend/base/default/images/eepohs/estpay/eepohs_logo_x40px.png" alt="Eepohs"/></a>
     </div>
 </div>
