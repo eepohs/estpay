@@ -47,13 +47,8 @@ Event.observe(window, 'load', function() {
 
 EepohsPayment = Class.create();
 EepohsPayment.prototype = {
-    servicesApi:'http://services.eepohs.com',
-    version:0,
     initialize: function(){
 
-    },
-    getServiceUrl: function(url){
-        return this.servicesApi + url;
     },
     /**
      * @elements array of element id-s / payment methods
@@ -88,26 +83,10 @@ EepohsPayment.prototype = {
             );
 
     },
-    addRegisterButton: function(){
-
-    },
     /**
      * Sets current module version
      */
     setModuleVersion: function(version){
         this.version = version;
-    },
-    /**
-     * Checks for current module upgrades from Eepohs Services API
-     */
-    checkForUpgrades: function(module, version){
-        //TODO implement local AJAX proxy
-        //        var url = this.servicesApi + '/software/checkVersion';
-        //        new Ajax.Request(url,{
-        //            onSuccess: function(response){
-        //                alert( response.responseJSON );
-        //            }
-        //        });
-        return;
     }
 }
