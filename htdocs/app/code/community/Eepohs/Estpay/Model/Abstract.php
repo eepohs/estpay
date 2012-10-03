@@ -50,6 +50,7 @@ abstract class Eepohs_Estpay_Model_Abstract
     protected $_canAuthorize = true;
     protected $_isGateway = true;
     protected $_canUseCheckout = true;
+    protected $logFile = 'estpay.log';
 
     /**
      * Order Id to create invoice for
