@@ -122,4 +122,9 @@
             </block>
         </reference>
     </estpay_lhv_redirect>
+    <default>
+        <reference name="footer">
+            <block type="estpay/info" name="estpay_info" template="eepohs/estpay/info.phtml" />
+        </reference>
+    </default>
 </layout>
