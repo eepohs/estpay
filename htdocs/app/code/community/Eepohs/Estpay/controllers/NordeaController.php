@@ -1,19 +1,26 @@
 <?php
-
 /**
+ * NordeaController.php
+ *
+ * PHP version 5
+ *
+ * @category   Magento
  * @package    Eepohs
  * @subpackage Estpay
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @link       http://eepohs.com/
  */
 
 /**
- * Controller for Nordea Bank of Estpay payment method
+ * Controller for Nordea of Estpay payment method
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
  * TO BE BOUND BY THE TERMS OF THIS LICENSE.
  * IF YOU DO NOT AGREE TO THE TERMS OF THIS LICENSE, DO NOT USE THE SOFTWARE.
  *
- * Copyright (c) 2012, Eepohs OÜ
+ * Copyright (c) $year$, Eepohs OÜ
  * All rights reserved.
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -34,14 +41,14 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @license http://opensource.org/licenses/bsd-license.php
- * @version $version$
- * @author Eepohs OÜ
- * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
- *
+ * @category   Community
  * @package    Eepohs
  * @subpackage Estpay
- * @category   Payment methods
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @copyright  $year$ Eepohs OÜ
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @version    Release: $version$
+ * @link       http://eepohs.com/
  */
 class Eepohs_Estpay_NordeaController extends Eepohs_Estpay_Controller_Abstract
 {

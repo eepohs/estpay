@@ -1,8 +1,16 @@
 <?php
 
 /**
+ * Initjs.php
+ *
+ * PHP version 5
+ *
+ * @category   Magento
  * @package    Eepohs
  * @subpackage Estpay
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @link       http://eepohs.com/
  */
 
 /**
@@ -13,7 +21,7 @@
  * TO BE BOUND BY THE TERMS OF THIS LICENSE.
  * IF YOU DO NOT AGREE TO THE TERMS OF THIS LICENSE, DO NOT USE THE SOFTWARE.
  *
- * Copyright (c) $year$, Eepohs OÜ
+ * Copyright (c) 2012, Eepohs OÜ
  * All rights reserved.
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -34,21 +42,22 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @license http://opensource.org/licenses/bsd-license.php
- * @version $version$
- * @author Eepohs OÜ
- * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
- *
+ * @category   Community
  * @package    Eepohs
  * @subpackage Estpay
- * @category   Payment methods
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @copyright  2012 Eepohs OÜ
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @version    Release: $version$
+ * @link       http://eepohs.com/
  */
-class Eepohs_Estpay_Block_Adminhtml_Initjs
-    extends Mage_Adminhtml_Block_Template
+class Eepohs_Estpay_Block_Adminhtml_Initjs extends Mage_Adminhtml_Block_Template
 {
 
     /**
      * Include JS in the head if section is Eepohs/Estpay
+     *
+     * @return void
      */
     protected function _prepareLayout()
     {
@@ -61,6 +70,11 @@ class Eepohs_Estpay_Block_Adminhtml_Initjs
         parent::_prepareLayout();
     }
 
+    /**
+     * Renders current block to HTML
+     *
+     * @return string HTML
+     */
     protected function _toHtml()
     {
         $section = $this->getAction()->getRequest()->getParam('section', false);
@@ -71,13 +85,18 @@ class Eepohs_Estpay_Block_Adminhtml_Initjs
         }
     }
 
+    /**
+     * Returns version number of Estpay
+     *
+     * @return string
+     */
     public function getModuleVersion()
     {
         return (string) Mage::getConfig()
                 ->getNode()
             ->modules
             ->Eepohs_Estpay
-             ->version;
+            ->version;
     }
 
 }

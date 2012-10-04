@@ -1,12 +1,19 @@
 <?php
-
 /**
+ * Data.php
+ *
+ * PHP version 5
+ *
+ * @category   Magento
  * @package    Eepohs
  * @subpackage Estpay
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @link       http://eepohs.com/
  */
 
 /**
- * Helper class for Estpay payment method
+ * Generic helper for Estpay
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -34,28 +41,29 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @license http://opensource.org/licenses/bsd-license.php
- * @version $version$
- * @author Eepohs OÜ
- * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
- *
+ * @category   Community
  * @package    Eepohs
  * @subpackage Estpay
- * @category   Payment methods
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @copyright  $year$ Eepohs OÜ
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @version    Release: $version$
+ * @link       http://eepohs.com/
  */
 class Eepohs_Estpay_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
     /**
-     * Calculates reference number
+     * Calculates reference number for bank payment
      *
-     * @param type $number
-     * @return string
+     * @param string $refStr Input reference
+     * 
+     * @return string reference number
      */
-    public function calcRef($number)
+    public function calcRef($refStr)
     {
 
-        $n = (string) $number;
+        $n = (string) $refStr;
         $w = array(7, 3, 1);
 
         $sl = $st = strlen($n);

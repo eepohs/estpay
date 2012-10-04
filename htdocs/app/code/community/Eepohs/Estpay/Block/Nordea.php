@@ -1,12 +1,20 @@
 <?php
 
 /**
+ * Nordea.php
+ *
+ * PHP version 5
+ *
+ * @category   Magento
  * @package    Eepohs
  * @subpackage Estpay
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @link       http://eepohs.com/
  */
 
 /**
- * Estpay block for Nordea Bank
+ * Nordea Bank form block for Estpay
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -34,22 +42,27 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @license http://opensource.org/licenses/bsd-license.php
- * @version $version$
- * @author Eepohs OÜ
- * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
- *
+ * @category   Community
  * @package    Eepohs
  * @subpackage Estpay
- * @category   Payment methods
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @copyright  $year$ Eepohs OÜ
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @version    Release: $version$
+ * @link       http://eepohs.com/
  */
-class Eepohs_Estpay_Block_Nordea
-    extends Eepohs_Estpay_Block_Abstract
+class Eepohs_Estpay_Block_Nordea extends Eepohs_Estpay_Block_Abstract
 {
 
     protected $_code = 'eepohs_nordea';
     protected $_gateway = 'nordea';
 
+    /**
+     * Returns fields for Nordea form
+     * to be submitted to bank
+     *
+     * @return array
+     */
     public function getFields()
     {
 
@@ -61,8 +74,8 @@ class Eepohs_Estpay_Block_Nordea
         $fields['SOLOPMT_VERSION'] = '0003';
         $fields['SOLOPMT_STAMP'] = time();
         $fields['SOLOPMT_RCV_ID'] =
-        Mage::getStoreConfig(
-            'payment/' . $this->_code . '/service_provider'
+            Mage::getStoreConfig(
+                'payment/' . $this->_code . '/service_provider'
         );
 
         /* Choose language:
@@ -101,9 +114,8 @@ class Eepohs_Estpay_Block_Nordea
         $fields['SOLOPMT_KEYVERS'] = '0001';
         $fields['SOLOPMT_CUR'] = 'EUR';
 
-        $data =
-            $fields['SOLOPMT_VERSION'] . '&' .
-            $fields['SOLOPMT_STAMP'] . '&' .
+        $data = $fields['SOLOPMT_VERSION'] . '&'
+            . $fields['SOLOPMT_STAMP'] . '&' .
             $fields['SOLOPMT_RCV_ID'] . '&' .
             $fields['SOLOPMT_AMOUNT'] . '&' .
             $fields['SOLOPMT_REF'] . '&' .

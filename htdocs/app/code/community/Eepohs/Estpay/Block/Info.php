@@ -48,12 +48,10 @@
  * @author     Eepohs OÜ <info@eepohs.com>
  * @copyright  2012 Eepohs OÜ
  * @license    http://opensource.org/licenses/bsd-license.php BSDL
- * @version    Release $version$
+ * @version    Release: $version$
  * @link       http://eepohs.com/
- *
  */
-class Eepohs_Estpay_Block_Info
-    extends Mage_Core_Block_Template
+class Eepohs_Estpay_Block_Info extends Mage_Core_Block_Template
 {
 
     /**
@@ -68,7 +66,8 @@ class Eepohs_Estpay_Block_Info
         $methods = array();
         foreach ( $paymentMethods as $paymentCode => $paymentModel ) {
             if ( $paymentModel instanceof Eepohs_Estpay_Model_Abstract ) {
-                $paymentTitle = Mage::getStoreConfig('payment/' . $paymentCode . '/title');
+                $paymentTitle
+                    = Mage::getStoreConfig('payment/' . $paymentCode . '/title');
                 $formBlockType = $paymentModel->getFormBlockType();
                 $formBlockInstance = Mage::getBlockSingleton($formBlockType);
                 $code = $paymentCode;
@@ -76,7 +75,7 @@ class Eepohs_Estpay_Block_Info
                 'title' => $paymentTitle,
                 'code' => $paymentCode,
                 'logo' => $formBlockInstance->getMethodLogoUrl()
-                 );
+                );
             }
         }
         return $methods;

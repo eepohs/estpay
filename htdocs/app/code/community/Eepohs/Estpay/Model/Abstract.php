@@ -1,12 +1,19 @@
 <?php
-
 /**
+ * Abstract.php
+ *
+ * PHP version 5
+ *
+ * @category   Magento
  * @package    Eepohs
  * @subpackage Estpay
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @link       http://eepohs.com/
  */
 
 /**
- * Abstract Estpay Model
+ * Abstract model for Estpay payment methods
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -34,14 +41,14 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @license http://opensource.org/licenses/bsd-license.php
- * @version $version$
- * @author Eepohs OÜ
- * @copyright $year$ Eepohs OÜ http://www.eepohs.com/
- *
+ * @category   Community
  * @package    Eepohs
  * @subpackage Estpay
- * @category   Payment methods
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @copyright  $year$ Eepohs OÜ
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @version    Release: $version$
+ * @link       http://eepohs.com/
  */
 abstract class Eepohs_Estpay_Model_Abstract
     extends Mage_Payment_Model_Method_Abstract

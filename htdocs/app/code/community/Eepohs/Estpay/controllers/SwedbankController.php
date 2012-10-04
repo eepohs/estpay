@@ -48,9 +48,8 @@
  * @author     Eepohs OÜ <info@eepohs.com>
  * @copyright  $year$ Eepohs OÜ
  * @license    http://opensource.org/licenses/bsd-license.php BSDL
- * @version    Release $version$
+ * @version    Release: $version$
  * @link       http://eepohs.com/
- *
  */
 class Eepohs_Estpay_SwedbankController extends Eepohs_Estpay_Controller_Abstract
 {
