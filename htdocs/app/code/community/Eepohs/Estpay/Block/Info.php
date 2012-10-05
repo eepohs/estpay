@@ -64,17 +64,15 @@ class Eepohs_Estpay_Block_Info extends Mage_Core_Block_Template
     {
         $paymentMethods = Mage::getSingleton('payment/config')->getActiveMethods();
         $methods = array();
-        foreach ( $paymentMethods as $paymentCode => $paymentModel ) {
-            if ( $paymentModel instanceof Eepohs_Estpay_Model_Abstract ) {
-                $paymentTitle
-                    = Mage::getStoreConfig('payment/' . $paymentCode . '/title');
+        foreach ($paymentMethods as $paymentCode => $paymentModel) {
+            if ($paymentModel instanceof Eepohs_Estpay_Model_Abstract) {
+                $paymentTitle = Mage::getStoreConfig('payment/' . $paymentCode . '/title');
                 $formBlockType = $paymentModel->getFormBlockType();
                 $formBlockInstance = Mage::getBlockSingleton($formBlockType);
-                $code = $paymentCode;
                 $methods[] = array(
-                'title' => $paymentTitle,
-                'code' => $paymentCode,
-                'logo' => $formBlockInstance->getMethodLogoUrl()
+                    'title' => $paymentTitle,
+                    'code' => $paymentCode,
+                    'logo' => $formBlockInstance->getMethodLogoUrl()
                 );
             }
         }

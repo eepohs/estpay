@@ -52,12 +52,15 @@
  */
 class Eepohs_Estpay_Helper_Data extends Mage_Core_Helper_Abstract
 {
+    const _VERIFY_SUCCESS = 1; // payment successful
+    const _VERIFY_CANCEL = 2; // payment unsuccessful
+    const _VERIFY_CORRUPT = 3; // wrong or corrupt response
 
     /**
      * Calculates reference number for bank payment
      *
      * @param string $refStr Input reference
-     * 
+     *
      * @return string reference number
      */
     public function calcRef($refStr)

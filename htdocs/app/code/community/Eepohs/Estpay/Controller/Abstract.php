@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Abstract.php
  *
@@ -50,10 +51,8 @@
  * @version    Release: $version$
  * @link       http://eepohs.com/
  */
-class Eepohs_Estpay_Controller_Abstract
-    extends Mage_Core_Controller_Front_Action
+class Eepohs_Estpay_Controller_Abstract extends Mage_Core_Controller_Front_Action
 {
-
     /**
      *
      * @var specifies log file name for Estpay
@@ -75,25 +74,18 @@ class Eepohs_Estpay_Controller_Abstract
     {
 
         /* Send order confirmation */
-        if (
-            Mage::getStoreConfig(
-                'payment/' . $this->_code . '/order_confirmation'
-            )
-            == '1'
-        ) {
+        if (Mage::getStoreConfig('payment/' . $this->_code . '/order_confirmation') == '1') {
             try {
                 $order = Mage::getModel('sales/order');
                 $order->load(
-                    Mage::getSingleton('checkout/session')->getLastOrderId()
+                        Mage::getSingleton('checkout/session')->getLastOrderId()
                 );
                 $order->sendNewOrderEmail();
                 $order->save();
-            } catch ( Exception $e ) {
+            } catch (Exception $e) {
                 Mage::log(
-                    sprintf(
-                        '%s(%s): %s', __METHOD__, __LINE__,
-                        print_r($e->getMessage(), true)
-                    ), null, $this->logFile
+                        sprintf('%s(%s): %s', __METHOD__, __LINE__, print_r($e->getMessage(), true)
+                        ), null, $this->logFile
                 );
             }
         }
@@ -114,35 +106,36 @@ class Eepohs_Estpay_Controller_Abstract
     {
 
         Mage::log(
-            sprintf(
-                '%s(%s)@%s: %s',
-                __METHOD__,
-                __LINE__,
-                $_SERVER['REMOTE_ADDR'],
-                print_r($this->getRequest()->getParams(), true)
-            ),
-            null,
-            $this->logFile
+                sprintf(
+                        '%s(%s)@%s: %s', __METHOD__, __LINE__, $_SERVER['REMOTE_ADDR'],
+                        print_r($this->getRequest()->getParams(), true)
+                ), null, $this->logFile
         );
         $session = Mage::getSingleton('checkout/session');
         $orderId = $session->getLastRealOrderId();
-        if ( !$orderId ) {
+        if (!$orderId) {
             $orderId = $this->getRequest()->getParam('VK_STAMP');
         }
-        if ( !$orderId ) {
+        if (!$orderId) {
             $this->_redirect('checkout/onepage/failure');
             return;
         }
         $model = Mage::getModel($this->_model);
         $model->setOrderId($orderId);
         $verify = $model->verify($this->getRequest()->getParams());
-        if ( $verify === true ) {
-            $model->createInvoice();
-            $this->_redirect('checkout/onepage/success');
-        } else {
-            $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
-            $order->cancel()->save();
-            $this->_redirect('checkout/onepage/failure');
+        switch ($verify) {
+            case Eepohs_Estpay_Helper_Data::_VERIFY_SUCCESS:
+                $model->createInvoice();
+                $this->_redirect('checkout/onepage/success');
+                break;
+            case Eepohs_Estpay_Helper_Data::_VERIFY_CANCEL:
+                $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+                $order->cancel()->save();
+                $this->_redirect('checkout/onepage/failure');
+                break;
+            case Eepohs_Estpay_Helper_Data::_VERIFY_CORRUPT:
+            default:
+                break;
         }
     }
 

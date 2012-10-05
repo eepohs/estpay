@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Abstract.php
  *
@@ -50,10 +51,8 @@
  * @version    Release: $version$
  * @link       http://eepohs.com/
  */
-abstract class Eepohs_Estpay_Model_Abstract
-    extends Mage_Payment_Model_Method_Abstract
+abstract class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Abstract
 {
-
     protected $_canAuthorize = true;
     protected $_isGateway = true;
     protected $_canUseCheckout = true;
@@ -76,19 +75,15 @@ abstract class Eepohs_Estpay_Model_Abstract
     public function createInvoice()
     {
         $order = Mage::getModel('sales/order')
-            ->loadByIncrementId($this->getOrderId());
+                ->loadByIncrementId($this->getOrderId());
 
-        if ( $order->canInvoice() ) {
+        if ($order->canInvoice()) {
             $invoice = $order->prepareInvoice();
             $invoice->pay()->register();
             $invoice->save();
 
             /* Send invoice */
-            if (
-                Mage::getStoreConfig(
-                    'payment/' . $this->_code . '/invoice_confirmation'
-                ) == '1'
-            ) {
+            if (Mage::getStoreConfig('payment/' . $this->_code . '/invoice_confirmation') == '1') {
                 $invoice->sendEmail(true, '');
             }
 
@@ -103,7 +98,7 @@ abstract class Eepohs_Estpay_Model_Abstract
      * Abstract method to be overloaded by implementing classes.
      * This is used to verify response from bank
      *
-     * @return boolean
+     * @return int
      */
     public abstract function verify(array $params = array());
 }

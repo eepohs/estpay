@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Estcard.php
  *
@@ -52,7 +53,6 @@
  */
 class Eepohs_Estpay_Model_Estcard extends Eepohs_Estpay_Model_Abstract
 {
-
     protected $_code = 'eepohs_estcard';
     protected $_formBlockType = 'estpay/estcard';
     protected $_gateway = 'estcard';
@@ -61,67 +61,67 @@ class Eepohs_Estpay_Model_Estcard extends Eepohs_Estpay_Model_Abstract
      * Verifies response sent by the bank
      *
      * @param array $params Parameters by bank
-     * 
-     * @return boolean
+     *
+     * @return int
      */
     public function verify(array $params = array())
     {
 
-        $merchantId = Mage::getStoreConfig(
-            'payment/' . $this->_code . '/merchant_id'
-        );
+        $merchantId = Mage::getStoreConfig('payment/' . $this->_code . '/merchant_id');
 
-        if ( !isset($params['id']) || $params['id'] != $merchantId ) {
-            Mage::log(
-                sprintf(
-                    '%s (%s)@%s: Wrong merchant ID used for return: %s vs %s',
-                    __METHOD__,
-                    __LINE__,
-                    $_SERVER['REMOTE_ADDR'],
-                    $params['id'],
-                    $merchantId
-                ),
-                null,
-                $this->logFile
+        if (!isset($params['id']) || $params['id'] != $merchantId) {
+            Mage::log(sprintf(
+                            '%s (%s)@%s: Wrong merchant ID used for return: %s vs %s', __METHOD__, __LINE__,
+                            $_SERVER['REMOTE_ADDR'], $params['id'], $merchantId
+                    ), null, $this->logFile
             );
-            return false;
+            return Eepohs_Estpay_Helper_Data::_VERIFY_CORRUPT;
         }
 
         $data =
-            sprintf("%03s", $params['ver'])
-            . sprintf("%-10s", $params['id'])
-            . sprintf("%012s", $params['ecuno'])
-            . sprintf("%06s", $params['receipt_no'])
-            . sprintf("%012s", $params['eamount'])
-            . sprintf("%3s", $params['cur'])
-            . $params['respcode']
-            . $params['datetime']
-            . sprintf("%-40s", urldecode($params['msgdata']))
-            . sprintf("%-40s", urldecode($params['actiontext']));
+                sprintf("%03s", $params['ver'])
+                . sprintf("%-10s", $params['id'])
+                . sprintf("%012s", $params['ecuno'])
+                . sprintf("%06s", $params['receipt_no'])
+                . sprintf("%012s", $params['eamount'])
+                . sprintf("%3s", $params['cur'])
+                . $params['respcode']
+                . $params['datetime']
+                . sprintf("%-40s", urldecode($params['msgdata']))
+                . sprintf("%-40s", urldecode($params['actiontext']));
         $mac = pack('H*', $params['mac']);
 
-        $key = openssl_pkey_get_public(
-            Mage::getStoreConfig(
-                'payment/' . $this->_code . '/bank_certificate'
-            )
-        );
+        $key = openssl_pkey_get_public(Mage::getStoreConfig('payment/' . $this->_code . '/bank_certificate'));
         $result = openssl_verify($data, $mac, $key);
         openssl_free_key($key);
 
-        if ( $result && $params['respcode'] == '000' )
-            return true;
+        switch ($result) {
+            case 1: // ssl verify successful
+                if ($params['respcode'] == '000')
+                    return Eepohs_Estpay_Helper_Data::_VERIFY_SUCCESS;
+                else
+                    return Eepohs_Estpay_Helper_Data::_VERIFY_CANCEL;
 
-        Mage::log(
-            sprintf(
-                '%s (%s)@%s: Verification of signature failed for estcard',
-                __METHOD__,
-                __LINE__,
-                $_SERVER['REMOTE_ADDR']
-            ),
-            null,
-            $this->logFile
-        );
-        return false;
+            case 0: // ssl verify failed
+                Mage::log(sprintf(
+                                '%s (%s)@%s: Verification of signature failed for estcard', __METHOD__, __LINE__,
+                                $_SERVER['REMOTE_ADDR'], $params['VK_SND_ID']
+                        ), null, $this->logFile);
+
+                return Eepohs_Estpay_Helper_Data::_VERIFY_CORRUPT;
+
+            case -1: // ssl verify error
+            default:
+                $error = '';
+                while ($msg = openssl_error_string())
+                    $error .= $msg . "\n";
+                Mage::log(sprintf(
+                                '%s (%s)@%s: Verification of signature error for %s : %s', __METHOD__, __LINE__,
+                                $_SERVER['REMOTE_ADDR'], $params['VK_SND_ID'], $error
+                        ), null, $this->logFile);
+
+                return Eepohs_Estpay_Helper_Data::_VERIFY_CORRUPT;
+        }
     }
 
 }

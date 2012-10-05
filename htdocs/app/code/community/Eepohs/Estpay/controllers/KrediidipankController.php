@@ -50,8 +50,7 @@
  * @version    Release: $version$
  * @link       http://eepohs.com/
  */
-class Eepohs_Estpay_KrediidipankController
-    extends Eepohs_Estpay_Controller_Abstract
+class Eepohs_Estpay_KrediidipankController extends Eepohs_Estpay_Controller_Abstract
 {
 
     protected $_model = 'estpay/krediidipank';

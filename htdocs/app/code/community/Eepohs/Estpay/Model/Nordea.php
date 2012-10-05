@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Nordea.php
  *
@@ -52,7 +53,6 @@
  */
 class Eepohs_Estpay_Model_Nordea extends Eepohs_Estpay_Model_Abstract
 {
-
     protected $_code = 'eepohs_nordea';
     protected $_formBlockType = 'estpay/nordea';
     protected $_gateway = 'nordea';
@@ -62,59 +62,46 @@ class Eepohs_Estpay_Model_Nordea extends Eepohs_Estpay_Model_Abstract
      *
      * @param array $params Response sent by bank and to be verified
      *
-     * @return boolean
+     * @return int
      */
     public function verify(array $params = array())
     {
+        $test_success = false;
 
-        // No Express payment return data
-        if ( !isset($params['SOLOPMT_RETURN_PAID']) )
-            return false;
+        // Not present if cancelled or rejected
+        if (isset($params['SOLOPMT_RETURN_PAID']))
+            $test_success = true;
 
         $data =
-            $params['SOLOPMT_RETURN_VERSION'] . '&' .
-            $params['SOLOPMT_RETURN_STAMP'] . '&' .
-            $params['SOLOPMT_RETURN_REF'] . '&' .
-            $params['SOLOPMT_RETURN_PAID'] . '&' .
-            Mage::getStoreConfig('payment/' . $this->_code . '/mac_key') . '&';
+                $params['SOLOPMT_RETURN_VERSION'] . '&' .
+                $params['SOLOPMT_RETURN_STAMP'] . '&' .
+                $params['SOLOPMT_RETURN_REF'] . '&' .
+                ($test_success ? $params['SOLOPMT_RETURN_PAID'] . '&' : '') .
+                Mage::getStoreConfig('payment/' . $this->_code . '/mac_key') . '&';
 
         // Invalid MAC code
-        if (
-            $params['SOLOPMT_RETURN_MAC']
-            != strtoupper(md5($data))
-        ) {
-            Mage::log(
-                sprintf(
-                    "%s (%s)@%s: (Nordea) Invalid MAC code",
-                    __METHOD__,
-                    __LINE__,
-                    $_SERVER['REMOTE_ADDR']
-                )
-            );
-            return false;
+        if ($params['SOLOPMT_RETURN_MAC'] != strtoupper(md5($data))) {
+            Mage::log(sprintf("%s (%s)@%s: (Nordea) Invalid MAC code", __METHOD__, __LINE__, $_SERVER['REMOTE_ADDR']));
+            return Eepohs_Estpay_Helper_Data::_VERIFY_CORRUPT;
         }
 
         $session = Mage::getSingleton('checkout/session');
 
         $helper = Mage::helper('estpay');
         // Reference number doesn't match.
-        if (
-            $helper->calcRef($session->getLastRealOrderId())
-            != $params['SOLOPMT_RETURN_REF']
-        ) {
+        if ($helper->calcRef($session->getLastRealOrderId()) != $params['SOLOPMT_RETURN_REF']) {
             Mage::log(
-                sprintf(
-                    "%s (%s)@%s: (Nordea): Reference number doesn't match
-                (potential tampering attempt).",
-                    __METHOD__,
-                    __LINE__,
-                    $_SERVER['REMOTE_ADDR']
-                )
+                    sprintf("%s (%s)@%s: (Nordea): Reference number doesn't match (potential tampering attempt).",
+                            __METHOD__, __LINE__, $_SERVER['REMOTE_ADDR']
+                    )
             );
-            return false;
+            return Eepohs_Estpay_Helper_Data::_VERIFY_CORRUPT;
         }
 
-        return true;
+        if ($test_success)
+            return Eepohs_Estpay_Helper_Data::_VERIFY_SUCCESS;
+        else
+            return Eepohs_Estpay_Helper_Data::_VERIFY_CANCEL;
     }
 
 }

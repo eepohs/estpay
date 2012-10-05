@@ -53,7 +53,6 @@
  */
 class Eepohs_Estpay_Block_Nordea extends Eepohs_Estpay_Block_Abstract
 {
-
     protected $_code = 'eepohs_nordea';
     protected $_gateway = 'nordea';
 
@@ -73,15 +72,12 @@ class Eepohs_Estpay_Block_Nordea extends Eepohs_Estpay_Block_Abstract
 
         $fields['SOLOPMT_VERSION'] = '0003';
         $fields['SOLOPMT_STAMP'] = time();
-        $fields['SOLOPMT_RCV_ID'] =
-            Mage::getStoreConfig(
-                'payment/' . $this->_code . '/service_provider'
-        );
+        $fields['SOLOPMT_RCV_ID'] = Mage::getStoreConfig('payment/' . $this->_code . '/service_provider');
 
         /* Choose language:
          * 3 = english, 4 = estonian, 6 = latvian, 7 = lithuanian
          */
-        switch ( Mage::app()->getLocale()->getLocaleCode() ) {
+        switch (Mage::app()->getLocale()->getLocaleCode()) {
             case 'et_EE':
                 $language = '4';
                 break;
@@ -92,36 +88,26 @@ class Eepohs_Estpay_Block_Nordea extends Eepohs_Estpay_Block_Abstract
         $fields['SOLOPMT_LANGUAGE'] = $language;
 
         $fields['SOLOPMT_AMOUNT'] = number_format(
-            $order->getBaseGrandTotal(), 2, '.', ''
+                $order->getBaseGrandTotal(), 2, '.', ''
         );
         $fields['SOLOPMT_REF'] = $helper->calcRef($order->getIncrementId());
         $fields['SOLOPMT_DATE'] = 'EXPRESS';
-        $fields['SOLOPMT_MSG'] = __('Invoice number') . ' '
-            . $order->getIncrementId();
-        $fields['SOLOPMT_RETURN'] =
-            Mage::getUrl(
-                'estpay/' . $this->_gateway . '/return'
-            ) . '?';
-        $fields['SOLOPMT_CANCEL'] =
-            Mage::getUrl(
-                'estpay/' . $this->_gateway . '/return'
-            ) . '?';
-        $fields['SOLOPMT_REJECT'] =
-            Mage::getUrl(
-                'estpay/' . $this->_gateway . '/return'
-            ) . '?';
+        $fields['SOLOPMT_MSG'] = __('Invoice number') . ' ' . $order->getIncrementId();
+        $fields['SOLOPMT_RETURN'] = Mage::getUrl('estpay/' . $this->_gateway . '/return') . '?';
+        $fields['SOLOPMT_CANCEL'] = Mage::getUrl('estpay/' . $this->_gateway . '/return') . '?';
+        $fields['SOLOPMT_REJECT'] = Mage::getUrl('estpay/' . $this->_gateway . '/return') . '?';
         $fields['SOLOPMT_CONFIRM'] = 'YES';
         $fields['SOLOPMT_KEYVERS'] = '0001';
         $fields['SOLOPMT_CUR'] = 'EUR';
 
         $data = $fields['SOLOPMT_VERSION'] . '&'
-            . $fields['SOLOPMT_STAMP'] . '&' .
-            $fields['SOLOPMT_RCV_ID'] . '&' .
-            $fields['SOLOPMT_AMOUNT'] . '&' .
-            $fields['SOLOPMT_REF'] . '&' .
-            $fields['SOLOPMT_DATE'] . '&' .
-            $fields['SOLOPMT_CUR'] . '&' .
-            Mage::getStoreConfig('payment/' . $this->_code . '/mac_key') . '&';
+                . $fields['SOLOPMT_STAMP'] . '&' .
+                $fields['SOLOPMT_RCV_ID'] . '&' .
+                $fields['SOLOPMT_AMOUNT'] . '&' .
+                $fields['SOLOPMT_REF'] . '&' .
+                $fields['SOLOPMT_DATE'] . '&' .
+                $fields['SOLOPMT_CUR'] . '&' .
+                Mage::getStoreConfig('payment/' . $this->_code . '/mac_key') . '&';
 
         $fields['STRING'] = $data;
         $fields['SOLOPMT_MAC'] = strtoupper(md5($data));
