@@ -5,10 +5,10 @@
 # Note - this script deletes all files and directories of Estpay extension     #
 # All files will be removed!                                                   #
 #                                                                              #
-# @license http://www.wasabi.ee/w/2009/05/wasabi-commercial-software-license/  #
-# @version 1.1                                                           #
-# @author Wasabi OÜ                                                            #
-# @copyright 2012 Eepohs OÜ http://www.eepohs.com/                           #
+# @license http://opensource.org/licenses/bsd-license.php BSDL                 #
+# @version $version$                                                           #
+# @author Eepohs OÜ                                                            #
+# @copyright 2012 Eepohs OÜ http://www.eepohs.com/                             #
 #                                                                              #
 ################################################################################
 
