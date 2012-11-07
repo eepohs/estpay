@@ -82,6 +82,9 @@ abstract class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Ab
             $invoice->pay()->register();
             $invoice->save();
 
+            $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);
+            $order->save();
+
             /* Send invoice */
             if (Mage::getStoreConfig('payment/' . $this->_code . '/invoice_confirmation') == '1') {
                 $invoice->sendEmail(true, '');
@@ -89,9 +92,6 @@ abstract class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Ab
 
             Mage::register('current_invoice', $invoice);
         }
-
-        $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);
-        $order->save();
     }
 
     /**
