@@ -87,17 +87,17 @@
             </block>
         </reference>
     </estpay_swedbank_redirect>
-    <estpay_sampo_redirect>
+    <estpay_danske_redirect>
         <reference name="content">
-            <block type="estpay/sampo" name="estpay_sampo" template="eepohs/estpay/sampo.phtml">
-                <block type="cms/block" name="estpay_sampo_description">
+            <block type="estpay/danske" name="estpay_danske" template="eepohs/estpay/danske.phtml">
+                <block type="cms/block" name="estpay_danske_description">
                     <action method="setBlockId">
-                        <block_id>estpay_sampo_description</block_id>
+                        <block_id>estpay_danske_description</block_id>
                     </action>
                 </block>
             </block>
         </reference>
-    </estpay_sampo_redirect>
+    </estpay_danske_redirect>
     <estpay_krediidipank_redirect>
         <reference name="content">
             <block type="estpay/krediidipank" name="estpay_krediidipank" template="eepohs/estpay/krediidipank.phtml">

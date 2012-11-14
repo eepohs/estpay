@@ -1,7 +1,6 @@
 <?php
-
 /**
- * Sampo.php
+ * Danske.php
  *
  * PHP version 5
  *
@@ -14,7 +13,7 @@
  */
 
 /**
- * SampoPank form block for Estpay
+ * Danske payment model for Estpay
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -51,10 +50,11 @@
  * @version    Release: $version$
  * @link       http://eepohs.com/
  */
-class Eepohs_Estpay_Block_Sampo extends Eepohs_Estpay_Block_IPizza
+class Eepohs_Estpay_Model_Danske extends Eepohs_Estpay_Model_IPizza
 {
 
-    protected $_code = 'eepohs_sampo';
-    protected $_gateway = 'sampo';
+    protected $_code = 'eepohs_danske';
+    protected $_formBlockType = 'estpay/danske';
+    protected $_gateway = 'danske';
 
 }

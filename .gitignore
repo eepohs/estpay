@@ -17,6 +17,7 @@
 .DS_Store
 /tmp
 /output
+!/htdocs/var/connect
 app/code/community/Find/
 app/code/community/Phoenix/
 app/code/core/

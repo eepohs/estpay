@@ -25,7 +25,7 @@ Some of the bank API URL-s:
 
 https://www.seb.ee/cgi-bin/unet3.sh/un3min.r
 https://www.swedbank.ee/banklink
-https://www2.sampopank.ee/ibank/pizza/pizza
+https://www2.danskebank.ee/ibank/pizza/pizza
 https://netbank.nordea.com/pnbepay/epayn.jsp
 https://pos.estcard.ee/webpos/servlet/iPAYServlet
 

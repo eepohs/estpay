@@ -1,6 +1,6 @@
 <?php
 /**
- * sampo.phtml
+ * DanskeController.php
  *
  * PHP version 5
  *
@@ -13,7 +13,7 @@
  */
 
 /**
- * Sampo payment form block
+ * Controller for Danske of Estpay payment method
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -50,15 +50,10 @@
  * @version    Release: $version$
  * @link       http://eepohs.com/
  */
-?>
-<div class="payment_estpay_container payment_method_sampo">
-    <?php echo $this->getChildHtml('estpay_sampo_description') ?>
-    <form id="GatewayForm" name="sampo" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
-        <img src="<?php echo $this->getMethodLogoUrl(); ?>" class="payment-gateway-logo sampo_logo"/>
-        <?php foreach ($this->getFields() as $key => $value): ?>
-            <input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
-        <?php endforeach; ?>
-        <button class="button" onclick="this.form.submit();"><span><span><?php echo $this->__('Start payment') ?></span></span></button>
-    </form>
-    <?php echo $this->getQuickRedirectScript(); ?>
-</div>
+class Eepohs_Estpay_DanskeController extends Eepohs_Estpay_Controller_Abstract
+{
+
+    protected $_model = 'estpay/danske';
+    protected $_code = 'eepohs_danske';
+
+}

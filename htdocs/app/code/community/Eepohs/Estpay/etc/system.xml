@@ -361,8 +361,8 @@
                         </sort_order>
                     </fields>
                 </eepohs_swedbank>
-                <eepohs_sampo translate="label" module="estpay">
-                    <label>Sampo</label>
+                <eepohs_danske translate="label" module="estpay">
+                    <label>Danske</label>
                     <sort_order>130</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -464,7 +464,7 @@
                             <show_in_store>1</show_in_store>
                         </sort_order>
                     </fields>
-                </eepohs_sampo>
+                </eepohs_danske>
                 <eepohs_krediidipank translate="label" module="estpay">
                     <label>Krediidipank</label>
                     <sort_order>140</sort_order>
