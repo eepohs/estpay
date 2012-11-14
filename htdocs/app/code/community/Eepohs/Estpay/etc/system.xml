@@ -362,7 +362,7 @@
                     </fields>
                 </eepohs_swedbank>
                 <eepohs_danske translate="label" module="estpay">
-                    <label>Danske</label>
+                    <label>Danske Bank</label>
                     <sort_order>130</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>

@@ -57,7 +57,7 @@
 </style>
 <script type="text/javascript">
     //<![CDATA[
-    var EEPOHS_SKIN_URL = '<?php echo Mage::getDesign()->getSkinUrl('',array('_area'=>'adminhtml'));?>';
+    var EEPOHS_SKIN_URL = '<?php echo Mage::getDesign()->getSkinUrl('',array('_area'=>'adminhtml', '_package'=>'default', '_theme'=>'default'));?>';
     function initEepohsPayment() {
         var estpay = new EepohsPayment();
         estpay.addCss( 'entry-edit-head' ,['payment_eepohs_seb-head', 'payment_eepohs_nordea-head', 'payment_eepohs_swedbank-head', 'payment_eepohs_danske-head', 'payment_eepohs_krediidipank-head', 'payment_eepohs_estcard-head', 'payment_eepohs_lhv-head']);
